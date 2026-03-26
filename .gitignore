@@ -11,3 +11,5 @@ contracts/lib/
 
 # Build
 *.sol.json
+.next/
+node_modules/
