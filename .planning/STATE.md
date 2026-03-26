@@ -21,7 +21,7 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 | Phase | Name | Status | Plans | Progress |
 |-------|------|--------|-------|----------|
 | 1 | Smart Contract Foundation | ✓ | 3/3 | 100% |
-| 2 | IPFS Integration | ✓ | 4/4 | 100% |
+| 2 | IPFS Integration | ✓ | 5/5 | 100% |
 | 3 | Frontend Shell & Auth | ✓ | 1/1 | 100% |
 | 4 | Patient Dashboard | ✓ | 1/1 | 100% |
 | 5 | Researcher Dashboard | ○ | 0/0 | 0% |

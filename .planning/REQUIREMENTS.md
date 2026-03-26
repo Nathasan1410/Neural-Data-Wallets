@@ -15,15 +15,15 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 
 ### IPFS Data Management
 
-- [ ] **IPFS-01**: User can upload mock EEG data (JSON) to IPFS via Pinata
+- [x] **IPFS-01**: User can upload mock EEG data (JSON) to IPFS via Pinata
 - [ ] **IPFS-02**: System stores returned CID in smart contract linked to user address
 - [x] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
-- [ ] **IPFS-04**: System uses dedicated Pinata gateway (not ipfs.io)
+- [x] **IPFS-04**: System uses dedicated Pinata gateway (not ipfs.io)
 
 ### Access Control
 
-- [ ] **ACCESS-01**: User can grant access to researcher by wallet address
-- [ ] **ACCESS-02**: User can revoke access from researcher address
+- [x] **ACCESS-01**: User can grant access to researcher by wallet address
+- [x] **ACCESS-02**: User can revoke access from researcher address
 - [x] **ACCESS-03**: User can view list of addresses with access to each dataset
 - [x] **ACCESS-04**: Smart contract reverts if non-owner tries to access data
 - [x] **ACCESS-05**: Access events emitted for UI updates
@@ -83,12 +83,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-01 | Phase 3 | Complete |
 | AUTH-02 | Phase 3 | Complete |
 | AUTH-03 | Phase 3 | Complete |
-| IPFS-01 | Phase 2 | Pending |
-| IPFS-02 | Phase 2 | Pending |
+| IPFS-01 | Phase 2 | Complete |
+| IPFS-02 | Phase 5 | Pending |
 | IPFS-03 | Phase 4 | Complete |
-| IPFS-04 | Phase 2 | Pending |
-| ACCESS-01 | Phase 2 | Pending |
-| ACCESS-02 | Phase 2 | Pending |
+| IPFS-04 | Phase 2 | Complete |
+| ACCESS-01 | Phase 2 | Complete |
+| ACCESS-02 | Phase 2 | Complete |
 | ACCESS-03 | Phase 4 | Complete |
 | ACCESS-04 | Phase 1 | Complete |
 | ACCESS-05 | Phase 1 | Complete |
@@ -104,7 +104,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 **Coverage:**
 - v1 requirements: 21 total
-- Complete: 16/21 (76%)
+- Complete: 18/21 (86%)
 - Mapped to phases: 21
 - Unmapped: 0 ✓
 
