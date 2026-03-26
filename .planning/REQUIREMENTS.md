@@ -1,0 +1,112 @@
+# Requirements: Neural Data Wallets
+
+**Defined:** 2026-03-26
+**Core Value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
+
+## v1 Requirements
+
+Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
+
+### Authentication
+
+- [ ] **AUTH-01**: User can connect wallet via RainbowKit
+- [ ] **AUTH-02**: User wallet address displayed in UI header
+- [ ] **AUTH-03**: User session persists across browser refresh
+
+### IPFS Data Management
+
+- [ ] **IPFS-01**: User can upload mock EEG data (JSON) to IPFS via Pinata
+- [ ] **IPFS-02**: System stores returned CID in smart contract linked to user address
+- [ ] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
+- [ ] **IPFS-04**: System uses dedicated Pinata gateway (not ipfs.io)
+
+### Access Control
+
+- [ ] **ACCESS-01**: User can grant access to researcher by wallet address
+- [ ] **ACCESS-02**: User can revoke access from researcher address
+- [ ] **ACCESS-03**: User can view list of addresses with access to each dataset
+- [ ] **ACCESS-04**: Smart contract reverts if non-owner tries to access data
+- [ ] **ACCESS-05**: Access events emitted for UI updates
+
+### Researcher Dashboard
+
+- [ ] **RES-01**: Researcher can view list of CIDs they have access to
+- [ ] **RES-02**: Researcher can fetch and display EEG data from IPFS
+- [ ] **RES-03**: Researcher sees "access denied" if trying to access without grant
+
+### Smart Contract
+
+- [ ] **CONTRACT-01**: NeuralDataRegistry contract deployed to testnet
+- [ ] **CONTRACT-02**: Contract has uploadData(string cid) function
+- [ ] **CONTRACT-03**: Contract has grantAccess(address researcher) function
+- [ ] **CONTRACT-04**: Contract has revokeAccess(address researcher) function
+- [ ] **CONTRACT-05**: Contract has hasAccess(address user, address researcher) view function
+- [ ] **CONTRACT-06**: Contract passes all Foundry tests
+
+## v2 Requirements
+
+Deferred to future release. Tracked but not in current roadmap.
+
+### Encryption
+
+- **ENC-01**: Data encrypted before IPFS upload (AES-256)
+- **ENC-02**: Decryption keys released via smart contract to grantees
+- **ENC-03**: Researcher can decrypt data client-side after access grant
+
+### Enhanced Features
+
+- **ENS-01**: ENS name resolution for researcher addresses
+- **EXPIRY-01**: Time-limited access grants
+- **NOTIF-01**: Notifications when data is accessed
+- **HISTORY-01**: Export access history
+
+## Out of Scope
+
+Explicitly excluded. Documented to prevent scope creep.
+
+| Feature | Reason |
+|---------|--------|
+| Real EEG data processing | Too complex for 8-hour sprint; mock data sufficient |
+| Federated learning | Requires ML pipeline; debugging nightmare |
+| Multi-agent systems | Unpredictable debugging, infinite loop risks |
+| OAuth login | Wallet-only auth sufficient for prototype |
+| Mobile app | Web-first approach |
+| Payments/monetization | Not core to access control demo |
+| The Graph indexing | Overkill for prototype scale |
+
+## Traceability
+
+Which phases cover which requirements. Updated during roadmap creation.
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| IPFS-01 | Phase 2 | Pending |
+| IPFS-02 | Phase 2 | Pending |
+| IPFS-03 | Phase 4 | Pending |
+| IPFS-04 | Phase 2 | Pending |
+| ACCESS-01 | Phase 2 | Pending |
+| ACCESS-02 | Phase 2 | Pending |
+| ACCESS-03 | Phase 4 | Pending |
+| ACCESS-04 | Phase 2 | Pending |
+| ACCESS-05 | Phase 2 | Pending |
+| RES-01 | Phase 5 | Pending |
+| RES-02 | Phase 5 | Pending |
+| RES-03 | Phase 5 | Pending |
+| CONTRACT-01 | Phase 1 | Pending |
+| CONTRACT-02 | Phase 1 | Pending |
+| CONTRACT-03 | Phase 1 | Pending |
+| CONTRACT-04 | Phase 1 | Pending |
+| CONTRACT-05 | Phase 1 | Pending |
+| CONTRACT-06 | Phase 1 | Pending |
+
+**Coverage:**
+- v1 requirements: 21 total
+- Mapped to phases: 21
+- Unmapped: 0 ✓
+
+---
+*Requirements defined: 2026-03-26*
+*Last updated: 2026-03-26 after roadmap creation*
