@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 4 - Patient Dashboard
+**Current focus:** Phase 5 - Researcher Dashboard
 
 ---
 
@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 | 1 | Smart Contract Foundation | ✓ | 3/3 | 100% |
 | 2 | IPFS Integration | ✓ | 4/4 | 100% |
 | 3 | Frontend Shell & Auth | ✓ | 1/1 | 100% |
-| 4 | Patient Dashboard | ○ | 0/0 | 0% |
+| 4 | Patient Dashboard | ✓ | 1/1 | 100% |
 | 5 | Researcher Dashboard | ○ | 0/0 | 0% |
 | 6 | Polish & Deployment | ○ | 0/0 | 0% |
 
@@ -100,6 +100,13 @@ See: .planning/PROJECT.md (updated 2026-03-26)
 - [x] MetaMask + CoinbaseWallet connectors for Base Sepolia
 - [x] Build: ✓ SUCCESS
 
+### Phase 4: Patient Dashboard ✓ COMPLETE
+- [x] usePatientData hook using getDataCount + getData contract calls
+- [x] UploadedDataList component with CID, timestamp, IPFS gateway link
+- [x] PatientDashboard page at /patient route
+- [x] AccessList component for access grant display
+- [x] Build: ✓ SUCCESS
+
 ---
 
-*Last updated: 2026-03-26 after roadmap creation*
+*Last updated: 2026-03-26 after Phase 4 completion*
