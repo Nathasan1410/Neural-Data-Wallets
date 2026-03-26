@@ -124,6 +124,11 @@
 - IPFS-03: User can view list of their uploaded data (CID + timestamp)
 - ACCESS-03: User can view list of addresses with access to each dataset
 
+**Plans:** 1 plan
+
+**Plan Details:**
+- [x] 04-01-PLAN.md — usePatientData hook, UploadedDataList, AccessList, PatientDashboard page
+
 **Success Criteria:**
 1. Patient dashboard page created at `/patient`
 2. Shows list of user's uploaded CIDs with timestamps
@@ -133,8 +138,11 @@
 6. Transactions show loading/pending/confirmed states
 
 **Outcomes:**
-- Fully functional patient dashboard
-- Users can manage data and permissions
+- usePatientData hook using getDataCount + getData contract calls
+- UploadedDataList component displaying CID, timestamp, IPFS gateway link
+- AccessList component for access grant display
+- Fully functional patient dashboard at /patient route
+- Users can view their data and permissions
 
 ---
 
@@ -197,3 +205,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Roadmap created: 2026-03-26*
 *Phase 1 planned: 2026-03-26 — 3 plans in 3 waves*
 *Phase 2 planned: 2026-03-26 — 4 plans in 2 waves*
+*Phase 4 complete: 2026-03-26 — 1 plan complete*
