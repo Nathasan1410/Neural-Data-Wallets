@@ -2,6 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
+**Updated:** 2026-03-26 (Phase 1 planned)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -32,6 +33,13 @@
 - CONTRACT-04: Contract has revokeAccess(address researcher) function
 - CONTRACT-05: Contract has hasAccess(address user, address researcher) view function
 - CONTRACT-06: Contract passes all Foundry tests
+
+**Plans:** 3 plans
+
+**Plan Details:**
+- [x] 01-01-PLAN.md — Foundry setup + NeuralDataRegistry.sol implementation
+- [x] 01-02-PLAN.md — Comprehensive Foundry tests (TDD approach)
+- [x] 01-03-PLAN.md — Deployment script + testnet deployment
 
 **Success Criteria:**
 1. `foundry.toml` configured for testnet deployment
@@ -131,7 +139,7 @@
 1. Researcher dashboard page created at `/researcher`
 2. Queries contract for accessible CIDs
 3. Fetches and displays EEG data from IPFS
-4. Shows "access denied" for non-granted data
+4. Shows "access denied" for non-ganted data
 5. EEG data displayed in readable format (JSON viewer or visualization)
 
 **Outcomes:**
@@ -175,3 +183,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 ---
 
 *Roadmap created: 2026-03-26*
+*Phase 1 planned: 2026-03-26 — 3 plans in 3 waves*
