@@ -1,0 +1,13 @@
+.env
+.env.local
+
+# Foundry
+contracts/cache/
+contracts/out/
+contracts/artifacts/
+
+# Dependencies
+contracts/lib/
+
+# Build
+*.sol.json
