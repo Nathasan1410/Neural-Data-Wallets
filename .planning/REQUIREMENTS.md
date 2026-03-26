@@ -9,24 +9,24 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can connect wallet via RainbowKit
-- [ ] **AUTH-02**: User wallet address displayed in UI header
-- [ ] **AUTH-03**: User session persists across browser refresh
+- [x] **AUTH-01**: User can connect wallet via RainbowKit
+- [x] **AUTH-02**: User wallet address displayed in UI header
+- [x] **AUTH-03**: User session persists across browser refresh
 
 ### IPFS Data Management
 
 - [ ] **IPFS-01**: User can upload mock EEG data (JSON) to IPFS via Pinata
 - [ ] **IPFS-02**: System stores returned CID in smart contract linked to user address
-- [ ] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
+- [x] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
 - [ ] **IPFS-04**: System uses dedicated Pinata gateway (not ipfs.io)
 
 ### Access Control
 
 - [ ] **ACCESS-01**: User can grant access to researcher by wallet address
 - [ ] **ACCESS-02**: User can revoke access from researcher address
-- [ ] **ACCESS-03**: User can view list of addresses with access to each dataset
-- [ ] **ACCESS-04**: Smart contract reverts if non-owner tries to access data
-- [ ] **ACCESS-05**: Access events emitted for UI updates
+- [x] **ACCESS-03**: User can view list of addresses with access to each dataset
+- [x] **ACCESS-04**: Smart contract reverts if non-owner tries to access data
+- [x] **ACCESS-05**: Access events emitted for UI updates
 
 ### Researcher Dashboard
 
@@ -80,30 +80,31 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
+| AUTH-01 | Phase 3 | Complete |
+| AUTH-02 | Phase 3 | Complete |
+| AUTH-03 | Phase 3 | Complete |
 | IPFS-01 | Phase 2 | Pending |
 | IPFS-02 | Phase 2 | Pending |
-| IPFS-03 | Phase 4 | Pending |
+| IPFS-03 | Phase 4 | Complete |
 | IPFS-04 | Phase 2 | Pending |
 | ACCESS-01 | Phase 2 | Pending |
 | ACCESS-02 | Phase 2 | Pending |
-| ACCESS-03 | Phase 4 | Pending |
-| ACCESS-04 | Phase 2 | Pending |
-| ACCESS-05 | Phase 2 | Pending |
+| ACCESS-03 | Phase 4 | Complete |
+| ACCESS-04 | Phase 1 | Complete |
+| ACCESS-05 | Phase 1 | Complete |
 | RES-01 | Phase 5 | Pending |
 | RES-02 | Phase 5 | Pending |
 | RES-03 | Phase 5 | Pending |
-| CONTRACT-01 | Phase 1 | Pending |
-| CONTRACT-02 | Phase 1 | Pending |
-| CONTRACT-03 | Phase 1 | Pending |
-| CONTRACT-04 | Phase 1 | Pending |
-| CONTRACT-05 | Phase 1 | Pending |
-| CONTRACT-06 | Phase 1 | Pending |
+| CONTRACT-01 | Phase 1 | Complete |
+| CONTRACT-02 | Phase 1 | Complete |
+| CONTRACT-03 | Phase 1 | Complete |
+| CONTRACT-04 | Phase 1 | Complete |
+| CONTRACT-05 | Phase 1 | Complete |
+| CONTRACT-06 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 21 total
+- Complete: 16/21 (76%)
 - Mapped to phases: 21
 - Unmapped: 0 ✓
 
