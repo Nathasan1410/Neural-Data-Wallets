@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-26 (Phase 1 planned)
+**Updated:** 2026-03-26 (Phase 2 planned)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -49,7 +49,7 @@
 5. Deployment address recorded in `.env` or config
 
 **Outcomes:**
-- Deployed contract address: _TBD_
+- Deployed contract address: `0x6349a9480f5FB7D79F3abd7C5D89789227beD6F8`
 - Contract ABI available for frontend integration
 
 ---
@@ -66,6 +66,18 @@
 - ACCESS-02: User can revoke access from researcher address
 - ACCESS-04: Smart contract reverts if non-owner tries to access data
 - ACCESS-05: Access events emitted for UI updates
+
+**Plans:** 4 plans
+
+**Plan Details:**
+- [ ] 02-01-PLAN.md — Pinata SDK setup, API route, mock EEG data generator
+- [ ] 02-02-PLAN.md — wagmi config, contract ABI exports, RainbowKit providers
+- [ ] 02-03-PLAN.md — DataUpload component, UploadButton, main page integration
+- [ ] 02-04-PLAN.md — AccessControl panel, GrantAccessButton, RevokeAccessButton, hooks
+
+**Wave Structure:**
+- Wave 1: Plans 02-01, 02-02 (parallel - foundation)
+- Wave 2: Plans 02-03, 02-04 (parallel - UI components)
 
 **Success Criteria:**
 1. Pinata API credentials configured in `.env`
@@ -184,3 +196,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 
 *Roadmap created: 2026-03-26*
 *Phase 1 planned: 2026-03-26 — 3 plans in 3 waves*
+*Phase 2 planned: 2026-03-26 — 4 plans in 2 waves*
