@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-26 (Phase 2 planned)
+**Updated:** 2026-03-26 (Phase 2 gap closure planned)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -67,17 +67,19 @@
 - ACCESS-04: Smart contract reverts if non-owner tries to access data
 - ACCESS-05: Access events emitted for UI updates
 
-**Plans:** 4 plans
+**Plans:** 5 plans
 
 **Plan Details:**
-- [ ] 02-01-PLAN.md — Pinata SDK setup, API route, mock EEG data generator
-- [ ] 02-02-PLAN.md — wagmi config, contract ABI exports, RainbowKit providers
-- [ ] 02-03-PLAN.md — DataUpload component, UploadButton, main page integration
-- [ ] 02-04-PLAN.md — AccessControl panel, GrantAccessButton, RevokeAccessButton, hooks
+- [x] 02-01-PLAN.md — Pinata SDK setup, API route, mock EEG data generator
+- [x] 02-02-PLAN.md — wagmi config, contract ABI exports, RainbowKit providers
+- [x] 02-03-PLAN.md — DataUpload component, UploadButton, main page integration
+- [x] 02-04-PLAN.md — AccessControl panel, GrantAccessButton, RevokeAccessButton, hooks
+- [x] 02-05-PLAN.md — Gap closure: Integrate UploadButton and AccessControl into homepage
 
 **Wave Structure:**
 - Wave 1: Plans 02-01, 02-02 (parallel - foundation)
 - Wave 2: Plans 02-03, 02-04 (parallel - UI components)
+- Wave 3: Plan 02-05 (gap closure - depends on 02-03, 02-04)
 
 **Success Criteria:**
 1. Pinata API credentials configured in `.env`
@@ -86,11 +88,13 @@
 4. Upload flow: file → Pinata → CID → contract storage
 5. Grant/revoke functions callable from frontend
 6. Events emitted for access changes
+7. Homepage displays upload and access control UI when wallet connected
 
 **Outcomes:**
 - Working IPFS upload pipeline
 - Contract stores CIDs linked to user addresses
 - Access control functions tested end-to-end
+- Homepage displays UploadButton and AccessControl components
 
 ---
 
@@ -205,4 +209,5 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Roadmap created: 2026-03-26*
 *Phase 1 planned: 2026-03-26 — 3 plans in 3 waves*
 *Phase 2 planned: 2026-03-26 — 4 plans in 2 waves*
+*Phase 2 gap closure: 2026-03-26 — Plan 02-05 added*
 *Phase 4 complete: 2026-03-26 — 1 plan complete*
