@@ -1,5 +1,5 @@
 ---
-status: testing
+status: diagnosed
 phase: 02-ipfs-integration
 source: [02-01-SUMMARY.md, 02-02-SUMMARY.md, 02-03-SUMMARY.md, 02-04-SUMMARY.md]
 started: 2026-03-26T00:00:00Z
@@ -75,17 +75,26 @@ skipped: 5
   reason: "User reported: no upload ui at all - only shows 'Wallet connected!' message, page is mostly empty"
   severity: major
   test: 3
-  root_cause: ""     # Filled by diagnosis
-  artifacts: []      # Filled by diagnosis
-  missing: []        # Filled by diagnosis
-  debug_session: ""  # Filled by diagnosis
+  root_cause: "page.tsx does not import or render UploadButton component - only shows ConnectButton and static message"
+  artifacts:
+    - path: "src/app/page.tsx"
+      issue: "Missing UploadButton and AccessControl component integration"
+  missing:
+    - "Import UploadButton component"
+    - "Import AccessControl component"
+    - "Render both components in page layout"
+  debug_session: ""
 
 - truth: "Access control UI shows input field for researcher wallet address and 'Grant Access' button. Enter a valid Ethereum address, click Grant Access. Transaction confirmation appears in wallet. On success, UI shows confirmation and the granted address appears in a list."
   status: failed
   reason: "User reported: same as upload ui - no grant access button, page only shows wallet connect"
   severity: major
   test: 7
-  root_cause: ""     # Filled by diagnosis
-  artifacts: []      # Filled by diagnosis
-  missing: []        # Filled by diagnosis
-  debug_session: ""  # Filled by diagnosis
+  root_cause: "page.tsx does not import or render AccessControl component - only shows ConnectButton and static message"
+  artifacts:
+    - path: "src/app/page.tsx"
+      issue: "Missing AccessControl component integration"
+  missing:
+    - "Import AccessControl component"
+    - "Render AccessControl in page layout"
+  debug_session: ""

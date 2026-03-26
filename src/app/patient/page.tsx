@@ -4,11 +4,17 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useAccount } from 'wagmi'
 import { usePatientData } from '@/lib/hooks/usePatientData'
 import { UploadedDataList } from '@/components/UploadedDataList'
+import { UploadButton } from '@/components/UploadButton'
 import Link from 'next/link'
 
 export default function PatientPage() {
   const { isConnected } = useAccount()
   const { uploadedData, isLoading, error, refetch } = usePatientData()
+
+  const handleUploadComplete = () => {
+    // Refetch data after upload completes
+    setTimeout(() => refetch(), 2000)
+  }
 
   if (!isConnected) {
     return (
@@ -65,13 +71,16 @@ export default function PatientPage() {
           <section className="mb-8">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold">Your Uploaded Data</h2>
-              <button
-                onClick={() => refetch()}
-                disabled={isLoading}
-                className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded disabled:opacity-50"
-              >
-                {isLoading ? 'Loading...' : 'Refresh'}
-              </button>
+              <div className="flex gap-2">
+                <UploadButton onUploadComplete={handleUploadComplete} />
+                <button
+                  onClick={() => refetch()}
+                  disabled={isLoading}
+                  className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded disabled:opacity-50"
+                >
+                  {isLoading ? 'Loading...' : 'Refresh'}
+                </button>
+              </div>
             </div>
             <UploadedDataList data={uploadedData} isLoading={isLoading} error={error} />
           </section>
