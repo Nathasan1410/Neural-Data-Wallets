@@ -17,13 +17,13 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 
 - [x] **IPFS-01**: User can upload mock EEG data (JSON) to IPFS via Pinata
 - [ ] **IPFS-02**: System stores returned CID in smart contract linked to user address
-- [x] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
+- [ ] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
 - [x] **IPFS-04**: System uses dedicated Pinata gateway (not ipfs.io)
 
 ### Access Control
 
-- [x] **ACCESS-01**: User can grant access to researcher by wallet address
-- [x] **ACCESS-02**: User can revoke access from researcher address
+- [ ] **ACCESS-01**: User can grant access to researcher by wallet address
+- [ ] **ACCESS-02**: User can revoke access from researcher address
 - [x] **ACCESS-03**: User can view list of addresses with access to each dataset
 - [x] **ACCESS-04**: Smart contract reverts if non-owner tries to access data
 - [x] **ACCESS-05**: Access events emitted for UI updates
@@ -37,10 +37,10 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 ### Smart Contract
 
 - [ ] **CONTRACT-01**: NeuralDataRegistry contract deployed to testnet
-- [ ] **CONTRACT-02**: Contract has uploadData(string cid) function
-- [ ] **CONTRACT-03**: Contract has grantAccess(address researcher) function
-- [ ] **CONTRACT-04**: Contract has revokeAccess(address researcher) function
-- [ ] **CONTRACT-05**: Contract has hasAccess(address user, address researcher) view function
+- [x] **CONTRACT-02**: Contract has uploadData(string cid) function
+- [x] **CONTRACT-03**: Contract has grantAccess(address researcher) function
+- [x] **CONTRACT-04**: Contract has revokeAccess(address researcher) function
+- [x] **CONTRACT-05**: Contract has hasAccess(address user, address researcher) view function
 - [ ] **CONTRACT-06**: Contract passes all Foundry tests
 
 ## v2 Requirements
@@ -84,27 +84,27 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-02 | Phase 3 | Complete |
 | AUTH-03 | Phase 3 | Complete |
 | IPFS-01 | Phase 2 | Complete |
-| IPFS-02 | Phase 5 | Pending |
-| IPFS-03 | Phase 4 | Complete |
+| IPFS-02 | Phase 8 | Pending |
+| IPFS-03 | Phase 10 | Pending |
 | IPFS-04 | Phase 2 | Complete |
-| ACCESS-01 | Phase 2 | Complete |
-| ACCESS-02 | Phase 2 | Complete |
+| ACCESS-01 | Phase 9 | Pending |
+| ACCESS-02 | Phase 9 | Pending |
 | ACCESS-03 | Phase 4 | Complete |
 | ACCESS-04 | Phase 1 | Complete |
 | ACCESS-05 | Phase 1 | Complete |
 | RES-01 | Phase 5 | Pending |
 | RES-02 | Phase 5 | Pending |
 | RES-03 | Phase 5 | Pending |
-| CONTRACT-01 | Phase 1 | Complete |
+| CONTRACT-01 | Phase 7 | Pending |
 | CONTRACT-02 | Phase 1 | Complete |
 | CONTRACT-03 | Phase 1 | Complete |
 | CONTRACT-04 | Phase 1 | Complete |
 | CONTRACT-05 | Phase 1 | Complete |
-| CONTRACT-06 | Phase 1 | Complete |
+| CONTRACT-06 | Phase 7 | Pending |
 
 **Coverage:**
 - v1 requirements: 21 total
-- Complete: 18/21 (86%)
+- Complete: 12/21 (57%)
 - Mapped to phases: 21
 - Unmapped: 0 ✓
 

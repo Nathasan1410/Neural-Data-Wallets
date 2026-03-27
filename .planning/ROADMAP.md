@@ -192,6 +192,104 @@
 
 ---
 
+### Phase 7: Foundry Setup & Contract Verification (Gap Closure)
+
+**Goal:** Install Foundry, verify contract compiles/tests, deploy to Base Sepolia
+
+**Requirements:**
+- CONTRACT-01: NeuralDataRegistry contract deployed to testnet
+- CONTRACT-06: Contract passes all Foundry tests
+
+**Gap Closure:** Closes gaps from HONEST_STATUS.md audit
+
+**Tasks:**
+1. Install Foundry toolchain (`foundryup`)
+2. Compile `NeuralDataRegistry.sol` with `forge build`
+3. Run Foundry tests with `forge test`, fix any failures
+4. Deploy to Base Sepolia testnet
+5. Verify contract on BaseScan explorer
+
+**Success Criteria:**
+1. `forge --version` works
+2. Contract compiles without errors
+3. All Foundry tests pass
+4. Contract deployed to Base Sepolia with verified address
+5. Contract verified on BaseScan
+
+---
+
+### Phase 8: Wire Upload to Contract Storage (Gap Closure)
+
+**Goal:** Connect IPFS upload API to smart contract storage
+
+**Requirements:**
+- IPFS-02: System stores returned CID in smart contract linked to user address
+
+**Gap Closure:** Closes integration gap: Upload API → Contract `uploadData()`
+
+**Tasks:**
+1. Add viem/wagmi server-side to `/api/ipfs/upload` route
+2. After Pinata upload, call `uploadData(cid)` on contract
+3. Wait for transaction confirmation
+4. Return CID + tx hash to frontend
+5. Test end-to-end: file → IPFS → contract → display
+
+**Success Criteria:**
+1. Upload API writes CID to contract
+2. Transaction hash returned to client
+3. `getDataCount()` increments after upload
+4. `getData()` returns stored CID
+
+---
+
+### Phase 9: Wire Access Control Transactions (Gap Closure)
+
+**Goal:** Connect access control UI to smart contract transactions
+
+**Requirements:**
+- ACCESS-01: User can grant access to researcher by wallet address
+- ACCESS-02: User can revoke access from researcher address
+
+**Gap Closure:** Closes integration gap: AccessControl UI → Contract calls
+
+**Tasks:**
+1. Update `GrantAccessButton.tsx` to call `grantAccess(researcher)` via wagmi
+2. Update `RevokeAccessButton.tsx` to call `revokeAccess(researcher)` via wagmi
+3. Add transaction states (pending/confirmed/failed)
+4. Display toast notifications on success/failure
+5. Test grant/revoke end-to-end
+
+**Success Criteria:**
+1. Grant access button triggers blockchain transaction
+2. Revoke access button triggers blockchain transaction
+3. UI shows pending/confirmed states
+4. `hasAccess()` returns correct values after grant/revoke
+
+---
+
+### Phase 10: Patient Dashboard Data Flow (Gap Closure)
+
+**Goal:** Ensure patient dashboard displays actual contract data
+
+**Requirements:**
+- IPFS-03: User can view list of their uploaded data (CID + timestamp)
+
+**Gap Closure:** Closes flow gap: "View patient dashboard" complete
+
+**Tasks:**
+1. Verify `usePatientData` hook receives data from contract
+2. Ensure `UploadedDataList` renders actual data with correct formatting
+3. Add error handling for contract read failures
+4. Test full flow: upload → contract storage → display in table
+
+**Success Criteria:**
+1. Patient dashboard shows uploaded CIDs from contract
+2. Timestamps display correctly
+3. IPFS gateway links work
+4. Empty state shows when no data uploaded
+
+---
+
 ## Dependency Graph
 
 ```
@@ -211,3 +309,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Phase 2 planned: 2026-03-26 — 4 plans in 2 waves*
 *Phase 2 gap closure: 2026-03-26 — Plan 02-05 added*
 *Phase 4 complete: 2026-03-26 — 1 plan complete*
+*Gap closure phases created: 2026-03-27 — Phases 7-10 added after HONEST_STATUS.md audit*
