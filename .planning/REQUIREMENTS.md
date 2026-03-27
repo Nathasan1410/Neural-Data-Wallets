@@ -41,7 +41,7 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 - [x] **CONTRACT-03**: Contract has grantAccess(address researcher) function
 - [x] **CONTRACT-04**: Contract has revokeAccess(address researcher) function
 - [x] **CONTRACT-05**: Contract has hasAccess(address user, address researcher) view function
-- [ ] **CONTRACT-06**: Contract passes all Foundry tests
+- [x] **CONTRACT-06**: Contract passes all Foundry tests
 
 ## v2 Requirements
 
@@ -100,11 +100,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONTRACT-03 | Phase 1 | Complete |
 | CONTRACT-04 | Phase 1 | Complete |
 | CONTRACT-05 | Phase 1 | Complete |
-| CONTRACT-06 | Phase 7 | Pending |
+| CONTRACT-06 | Phase 7 | Complete |
 
 **Coverage:**
 - v1 requirements: 21 total
-- Complete: 12/21 (57%)
+- Complete: 13/21 (62%)
 - Mapped to phases: 21
 - Unmapped: 0 ✓
 

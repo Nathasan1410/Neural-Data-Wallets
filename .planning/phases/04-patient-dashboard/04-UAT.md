@@ -10,28 +10,27 @@ updated: 2026-03-26T00:00:00Z
 ## Current Test
 <!-- OVERWRITE each test - shows where we are -->
 
-number: 1
-name: Navigate to Patient Dashboard
+number: 3
+name: View Uploaded Data List
 expected: |
-  Open browser to http://localhost:3000/patient
-  Page loads without errors, shows "Patient Dashboard" header
-  If wallet not connected: Shows "Connect your wallet" prompt
-  If wallet connected: Shows uploaded data section
+  When user has uploaded data, table displays with columns: ID, CID (truncated), Timestamp, Actions
+  Upload button is visible on the page for uploading new data
 awaiting: user response
 
 ## Tests
 
 ### 1. Navigate to Patient Dashboard
 expected: Open browser to http://localhost:3000/patient - Page loads with "Patient Dashboard" header, wallet connection check shown
-result: [pending]
+result: pass
 
 ### 2. Wallet Connection Check
 expected: When wallet not connected, page shows "Connect your wallet" message with ConnectButton. After connecting, shows connected state and data section.
-result: [pending]
+result: pass
 
 ### 3. View Uploaded Data List
-expected: When user has uploaded data, table displays with columns: ID, CID (truncated), Timestamp, Actions. Each row shows one uploaded dataset.
-result: [pending]
+expected: When user has uploaded data, table displays with columns: ID, CID (truncated), Timestamp, Actions. Each row shows one uploaded dataset. Upload button visible on page.
+result: pass
+note: UploadButton was missing, added to patient dashboard in fix commit
 
 ### 4. Empty State Display
 expected: When user has no uploads, shows "No uploads yet" message with helpful text in a centered gray box.
@@ -56,9 +55,9 @@ result: [pending]
 ## Summary
 
 total: 8
-passed: 0
+passed: 3
 issues: 0
-pending: 8
+pending: 5
 skipped: 0
 
 ## Gaps
