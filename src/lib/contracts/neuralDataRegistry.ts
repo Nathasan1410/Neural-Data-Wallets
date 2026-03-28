@@ -1,6 +1,6 @@
 import { Address } from 'viem'
 
-export const NEURAL_DATA_CONTRACT = '0x6349a9480f5FB7D79F3abd7C5D89789227beD6F8' as Address
+export const NEURAL_DATA_CONTRACT = '0x2700C2B1268B115cF06136b881341903aBC7DC4a' as Address
 
 export const NEURAL_DATA_ABI = [
   {
