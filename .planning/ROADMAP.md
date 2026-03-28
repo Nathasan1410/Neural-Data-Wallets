@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-28 (Phase 9 Plan 01 complete - Access Control wired)
+**Updated:** 2026-03-28 (Phase 11 added - Test Coverage Gap Closure)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -323,6 +323,44 @@
 
 ---
 
+### Phase 11: Test Coverage Gap Closure ✓ COMPLETE
+
+**Goal:** Close critical test coverage gaps to reach 70%+ overall coverage
+
+**Requirements:**
+- COV-01: `usePatientData.ts` hook tests (currently 0%) ✓ COMPLETE - 80.95%
+- COV-02: `useAccessControl.ts` hook tests (currently 0%) ✓ COMPLETE - 93.75%
+- COV-03: `/api/ipfs/upload/route.ts` integration tests (currently 0%) ✓ COMPLETE - 87.5%
+
+**Gap Closure:** Closes coverage gaps identified in BRUTALLY_HONEST_ASSESSMENT.md
+
+**Plans:** 1 plan
+
+**Plan Details:**
+- [x] 11-01-PLAN.md — Hook tests and API route integration tests (COMPLETE)
+
+**Tasks:**
+1. Add integration tests for `usePatientData` hook (mock wagmi contract reads) ✓
+2. Add integration tests for `useAccessControl` hook (mock wagmi contract writes) ✓
+3. Simplify API route tests (simplified mocking approach) ✓
+4. Run coverage report, verify 70%+ overall coverage ✓ (73.24%)
+
+**Success Criteria:**
+1. `usePatientData.ts` coverage >= 80% ✓ (80.95%)
+2. `useAccessControl.ts` coverage >= 80% ✓ (93.75%)
+3. `/api/ipfs/upload/route.ts` coverage >= 70% ✓ (87.5%)
+4. Overall project coverage >= 70% ✓ (73.24%)
+5. All tests passing (94 tests) ✓
+
+**Outcomes:**
+- 5 new integration tests added (89 → 94 tests)
+- Overall coverage increased from 53.07% → 73.24%
+- Hook tests use wagmi mocking with vi.mock()
+- API route tests use class-based PinataSDK mock
+- SUMMARY.md created in .planning/phases/11-coverage-gap-closure/
+
+---
+
 ## Dependency Graph
 
 ```
@@ -346,3 +384,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Phase 7 Plan 07-01 complete: 2026-03-27 — Foundry installed, 22/22 tests pass*
 *Phase 8 Plan 08-01 complete: 2026-03-28 — Upload API wired to contract, serverSigner.ts created*
 *Phase 9 Plan 09-01 complete: 2026-03-28 — Access Control buttons wired, react-hot-toast added, 81 tests pass*
+*Phase 11 Plan 11-01 complete: 2026-03-28 — Hook tests + API route tests added, 73.24% coverage achieved*
