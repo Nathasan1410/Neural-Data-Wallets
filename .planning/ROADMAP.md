@@ -159,6 +159,17 @@
 - RES-02: Researcher can fetch and display EEG data from IPFS
 - RES-03: Researcher sees "access denied" if trying to access without grant
 
+**Plans:** 3 plans
+
+**Plan Details:**
+- [ ] 05-01-PLAN.md — ABI definitions + useResearcherData hook
+- [ ] 05-02-PLAN.md — AccessibleDataList and IPFSDataViewer components
+- [ ] 05-03-PLAN.md — Researcher dashboard page with human verification
+
+**Wave Structure:**
+- Wave 1: Plans 05-01, 05-02 (parallel - foundation and components)
+- Wave 2: Plan 05-03 (page integration + checkpoint)
+
 **Success Criteria:**
 1. Researcher dashboard page created at `/researcher`
 2. Queries contract for accessible CIDs
@@ -288,7 +299,7 @@
 - GrantAccessButton and RevokeAccessButton wired to NeuralDataRegistry contract
 - react-hot-toast@2.6.0 added for transaction feedback
 - Loading states show "Confirming..." during pending/confirmation
-- Success/error toasts display automatically
+- Success-error toasts display automatically
 - Comprehensive test suite (all 81 tests pass)
 - Build: ✓ SUCCESS
 
@@ -321,7 +332,7 @@
 3. IPFS gateway links work ✓
 4. Empty state shows when no data uploaded ✓
 
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 **Plan Details:**
 - [x] 10-01-PLAN.md — Patient Dashboard Data Flow (COMPLETE)
 
@@ -397,3 +408,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Phase 9 Plan 09-01 complete: 2026-03-28 — Access Control buttons wired, react-hot-toast added, 81 tests pass*
 *Phase 10 Plan 10-01 complete: 2026-03-28 — Error handling added, 94 tests pass*
 *Phase 11 Plan 11-01 complete: 2026-03-28 — Hook tests + API route tests added, 73.24% coverage achieved*
+*Phase 5 planned: 2026-03-28 — 3 plans in 2 waves*
