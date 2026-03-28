@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 | 4 | Patient Dashboard | ⚠ | 1/1 | UI exists, data flow pending |
 | 5 | Researcher Dashboard | ○ | 0/0 | 0% |
 | 6 | Polish & Deployment | ○ | 0/0 | 0% |
-| 7 | Foundry Verification | ✓ | 1/1 | PLAN 07-01 COMPLETE |
+| 7 | Foundry Verification | ✓ | 2/2 | COMPLETE - Deployed & Verified |
 | 8 | Upload Contract Wiring | ● | 1/1 | PLAN CREATED |
 | 9 | Access Control Wiring | ● | 1/1 | PLAN CREATED |
 | 10 | Patient Dashboard Flow | ● | 1/1 | PLAN CREATED |
@@ -45,17 +45,19 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 | Researcher | 0 | 3 | 0% |
 | Smart Contract | 5/6 | 6 | 83% |
 
-**Coverage:** 13/21 complete (62%) - after 07-01 plan completion
+**Coverage:** 14/21 complete (67%) - after Phase 7 complete
 
 ---
 
 ## Deployed Contracts
 
-| Network | Contract | Address |
-|---------|----------|---------|
-| Base Sepolia | NeuralDataRegistry | `0x6349a9480f5FB7D79F3abd7C5D89789227beD6F8` (UNVERIFIED) |
+| Network | Contract | Address | Status |
+|---------|----------|---------|--------|
+| Base Sepolia | NeuralDataRegistry | `0x2700C2B1268B115cF06136b881341903aBC7DC4a` | ✓ VERIFIED |
 
-**Block Explorer:** https://sepolia.basescan.org/address/0x6349a9480f5FB7D79F3abd7C5D89789227beD6F8
+**Block Explorer:** https://sepolia.basescan.org/address/0x2700C2B1268B115cF06136b881341903aBC7DC4a
+
+**Verification:** Sourcify exact_match (Compiler: 0.8.34, Optimizer: 200 runs)
 
 ---
 
@@ -115,11 +117,11 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 ### Gap Closure Phases (Created 2026-03-27)
 
-#### Phase 7: Foundry Verification ✓ COMPLETE (07-01)
+#### Phase 7: Foundry Verification ✓ COMPLETE
 - [x] Install Foundry toolchain (v1.5.1-stable)
 - [x] Compile and test contracts (all 22 tests pass)
-- [ ] Deploy to Base Sepolia (pending 07-02)
-- [ ] Verify on BaseScan (pending 07-02)
+- [x] Deploy to Base Sepolia (0x2700C2B1268B115cF06136b881341903aBC7DC4a)
+- [x] Verify on BaseScan (Sourcify exact_match)
 
 #### Phase 8: Upload Contract Wiring ● PLAN READY
 - [ ] Wire /api/ipfs/upload to call uploadData()
@@ -136,4 +138,4 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 ---
 
-*Last updated: 2026-03-27 after 07-01 plan completion (Foundry installed, all 22 tests pass)*
+*Last updated: 2026-03-28 - Phase 7 COMPLETE (Foundry installed, 22/22 tests pass, deployed to Base Sepolia, verified on BaseScan)*
