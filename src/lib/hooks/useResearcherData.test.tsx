@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider, createConfig, http } from 'wagmi'
 import { baseSepolia } from 'wagmi/chains'
 import { mock } from 'wagmi/connectors'
+import toast from 'react-hot-toast'
 
 // Create a test config with mock connector
 const testConfig = createConfig({
@@ -50,10 +51,19 @@ vi.mock('wagmi', async (importOriginal) => {
   }
 })
 
+// Mock react-hot-toast
+vi.mock('react-hot-toast', () => ({
+  default: {
+    error: vi.fn(),
+  },
+}))
+
 // Mock global fetch for IPFS calls
 const originalFetch = global.fetch
+
 beforeEach(() => {
   global.fetch = vi.fn()
+  vi.clearAllMocks()
 })
 
 afterEach(() => {
@@ -61,11 +71,9 @@ afterEach(() => {
 })
 
 const { useReadContract, useAccount } = await import('wagmi')
+const toast = await import('react-hot-toast')
 
 describe('useResearcherData', () => {
-  beforeEach(() => {
-    vi.clearAllMocks()
-  })
 
   it('should return empty data when wallet is not connected', () => {
     vi.mocked(useAccount).mockReturnValue({ address: undefined })
@@ -226,5 +234,74 @@ describe('useResearcherData', () => {
     const { result } = renderHook(() => useResearcherData(), { wrapper: testWrapper })
 
     expect(result.current.ipfsLoading).toBeDefined()
+  })
+
+  it('should handle access denied errors from IPFS fetch', async () => {
+    const mockDataIds = [BigInt(0)]
+    const mockDataList = [
+      { cid: 'bafkrei403', timestamp: BigInt(1234567890), metadata: '0x' },
+    ]
+
+    vi.mocked(useAccount).mockReturnValue({ address: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266' })
+    vi.mocked(useReadContract).mockReturnValue({
+      data: [mockDataIds, mockDataList],
+      isLoading: false,
+      error: null,
+      refetch: vi.fn(),
+    })
+
+    // Mock IPFS 403 access denied error - ensure proper Response-like object
+    const mockResponse = {
+      ok: false,
+      status: 403,
+      statusText: 'Forbidden',
+      json: vi.fn().mockResolvedValue({}),
+    }
+    vi.mocked(global.fetch).mockResolvedValue(mockResponse as any)
+
+    const testWrapper = createTestWrapper()
+    const { result } = renderHook(() => useResearcherData(), { wrapper: testWrapper })
+
+    await waitFor(() => {
+      expect(result.current.accessibleData.length).toBeGreaterThan(0)
+    }, { timeout: 3000 })
+
+    // Should have ipfsError set with access denied message
+    expect(result.current.accessibleData[0]?.ipfsError).toContain('Access denied')
+  })
+
+  it('should show toast notification when ALL data access fails', async () => {
+    const mockDataIds = [BigInt(0), BigInt(1)]
+    const mockDataList = [
+      { cid: 'bafkrei403a', timestamp: BigInt(1234567890), metadata: '0x' },
+      { cid: 'bafkrei403b', timestamp: BigInt(1234567891), metadata: '0x' },
+    ]
+
+    vi.mocked(useAccount).mockReturnValue({ address: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266' })
+    vi.mocked(useReadContract).mockReturnValue({
+      data: [mockDataIds, mockDataList],
+      isLoading: false,
+      error: null,
+      refetch: vi.fn(),
+    })
+
+    // Mock all IPFS fetches to fail with access denied
+    vi.mocked(global.fetch).mockResolvedValue({
+      ok: false,
+      status: 403,
+      statusText: 'Forbidden',
+    } as any)
+
+    const testWrapper = createTestWrapper()
+    const { result } = renderHook(() => useResearcherData(), { wrapper: testWrapper })
+
+    await waitFor(() => {
+      expect(result.current.accessibleData.length).toBeGreaterThan(0)
+    })
+
+    // Should show toast error notification
+    await waitFor(() => {
+      expect(toast.default.error).toHaveBeenCalledWith('Some data inaccessible - access denied by contract')
+    })
   })
 })
