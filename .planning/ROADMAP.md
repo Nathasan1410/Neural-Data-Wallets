@@ -162,8 +162,8 @@
 **Plans:** 3 plans
 
 **Plan Details:**
-- [ ] 05-01-PLAN.md — ABI definitions + useResearcherData hook
-- [ ] 05-02-PLAN.md — AccessibleDataList and IPFSDataViewer components
+- [x] 05-01-PLAN.md — ABI definitions + useResearcherData hook
+- [x] 05-02-PLAN.md — AccessibleDataList and IPFSDataViewer components
 - [ ] 05-03-PLAN.md — Researcher dashboard page with human verification
 
 **Wave Structure:**
