@@ -107,7 +107,44 @@ describe('neuralDataRegistry contract', () => {
     })
 
     it('should have correct number of ABI entries', () => {
-      expect(NEURAL_DATA_ABI).toHaveLength(9) // 6 functions + 3 events
+      expect(NEURAL_DATA_ABI).toHaveLength(12) // 9 functions + 3 events
+    })
+
+    it('should contain getAllAccessibleData function', () => {
+      const getAllAccessibleData = NEURAL_DATA_ABI.find(
+        (item: any) => item.type === 'function' && item.name === 'getAllAccessibleData'
+      )
+      expect(getAllAccessibleData).toBeDefined()
+      expect(getAllAccessibleData?.inputs).toEqual([
+        { name: 'researcher', type: 'address' }
+      ])
+      expect(getAllAccessibleData?.outputs).toHaveLength(2)
+    })
+
+    it('should contain getDataByOwnerPaginated function', () => {
+      const getDataByOwnerPaginated = NEURAL_DATA_ABI.find(
+        (item: any) => item.type === 'function' && item.name === 'getDataByOwnerPaginated'
+      )
+      expect(getDataByOwnerPaginated).toBeDefined()
+      expect(getDataByOwnerPaginated?.inputs).toEqual([
+        { name: 'owner', type: 'address' },
+        { name: 'offset', type: 'uint256' },
+        { name: 'limit', type: 'uint256' }
+      ])
+    })
+
+    it('should contain hasAccessToData function', () => {
+      const hasAccessToData = NEURAL_DATA_ABI.find(
+        (item: any) => item.type === 'function' && item.name === 'hasAccessToData'
+      )
+      expect(hasAccessToData).toBeDefined()
+      expect(hasAccessToData?.inputs).toEqual([
+        { name: 'user', type: 'address' },
+        { name: 'researcher', type: 'address' }
+      ])
+      expect(hasAccessToData?.outputs).toEqual([
+        { name: '', type: 'bool' }
+      ])
     })
   })
 })

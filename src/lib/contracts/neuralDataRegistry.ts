@@ -56,6 +56,52 @@ export const NEURAL_DATA_ABI = [
     stateMutability: 'view' as const
   },
   {
+    type: 'function' as const,
+    name: 'getAllAccessibleData',
+    inputs: [{ name: 'researcher', type: 'address' as const }],
+    outputs: [
+      { name: 'dataIds', type: 'uint256[]' as const },
+      {
+        name: 'dataList',
+        type: 'tuple[]' as const,
+        components: [
+          { name: 'cid', type: 'string' as const },
+          { name: 'timestamp', type: 'uint256' as const },
+          { name: 'metadata', type: 'bytes' as const }
+        ]
+      }
+    ],
+    stateMutability: 'view' as const
+  },
+  {
+    type: 'function' as const,
+    name: 'getDataByOwnerPaginated',
+    inputs: [
+      { name: 'owner', type: 'address' as const },
+      { name: 'offset', type: 'uint256' as const },
+      { name: 'limit', type: 'uint256' as const }
+    ],
+    outputs: [{
+      type: 'tuple[]' as const,
+      components: [
+        { name: 'cid', type: 'string' as const },
+        { name: 'timestamp', type: 'uint256' as const },
+        { name: 'metadata', type: 'bytes' as const }
+      ]
+    }],
+    stateMutability: 'view' as const
+  },
+  {
+    type: 'function' as const,
+    name: 'hasAccessToData',
+    inputs: [
+      { name: 'user', type: 'address' as const },
+      { name: 'researcher', type: 'address' as const }
+    ],
+    outputs: [{ name: '', type: 'bool' as const }],
+    stateMutability: 'view' as const
+  },
+  {
     type: 'event' as const,
     name: 'DataRegistered',
     inputs: [
