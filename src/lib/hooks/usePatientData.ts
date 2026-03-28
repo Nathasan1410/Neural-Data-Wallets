@@ -9,22 +9,27 @@ export interface UploadedData {
   metadata: string
 }
 
+const MAX_DATA_ITEMS = 20 // Maximum items to fetch per user
+
 export function usePatientData() {
   const { address: userAddress } = useAccount()
 
-  const { data: dataCount, isLoading: isLoadingCount, refetch: refetchCount } = useReadContract({
+  const { data: dataCount, isLoading: isLoadingCount, error: countError, refetch: refetchCount } = useReadContract({
     address: NEURAL_DATA_CONTRACT,
     abi: NEURAL_DATA_ABI,
     functionName: 'getDataCount',
     args: userAddress ? [userAddress] : undefined,
     query: {
       enabled: !!userAddress,
+      retry: 2,
+      retryDelay: 1000,
     }
   })
 
-  const count = Number(dataCount || BigInt(0))
+  const count = Math.min(Number(dataCount || BigInt(0)), MAX_DATA_ITEMS)
 
-  const { data: data0 } = useReadContract({
+  // Pre-declare all possible data reads (hooks cannot be called in loops)
+  const { data: data0, error: error0 } = useReadContract({
     address: NEURAL_DATA_CONTRACT,
     abi: NEURAL_DATA_ABI,
     functionName: 'getData',
@@ -32,7 +37,7 @@ export function usePatientData() {
     query: { enabled: count > 0 }
   })
 
-  const { data: data1 } = useReadContract({
+  const { data: data1, error: error1 } = useReadContract({
     address: NEURAL_DATA_CONTRACT,
     abi: NEURAL_DATA_ABI,
     functionName: 'getData',
@@ -40,7 +45,7 @@ export function usePatientData() {
     query: { enabled: count > 1 }
   })
 
-  const { data: data2 } = useReadContract({
+  const { data: data2, error: error2 } = useReadContract({
     address: NEURAL_DATA_CONTRACT,
     abi: NEURAL_DATA_ABI,
     functionName: 'getData',
@@ -48,7 +53,7 @@ export function usePatientData() {
     query: { enabled: count > 2 }
   })
 
-  const { data: data3 } = useReadContract({
+  const { data: data3, error: error3 } = useReadContract({
     address: NEURAL_DATA_CONTRACT,
     abi: NEURAL_DATA_ABI,
     functionName: 'getData',
@@ -56,7 +61,7 @@ export function usePatientData() {
     query: { enabled: count > 3 }
   })
 
-  const { data: data4 } = useReadContract({
+  const { data: data4, error: error4 } = useReadContract({
     address: NEURAL_DATA_CONTRACT,
     abi: NEURAL_DATA_ABI,
     functionName: 'getData',
@@ -64,20 +69,70 @@ export function usePatientData() {
     query: { enabled: count > 4 }
   })
 
-  const uploadedData: UploadedData[] = []
+  const { data: data5, error: error5 } = useReadContract({
+    address: NEURAL_DATA_CONTRACT,
+    abi: NEURAL_DATA_ABI,
+    functionName: 'getData',
+    args: count > 5 ? [BigInt(5)] : undefined,
+    query: { enabled: count > 5 }
+  })
 
-  if (data0) uploadedData.push({ dataId: BigInt(0), cid: data0.cid, timestamp: data0.timestamp, metadata: data0.metadata })
-  if (data1) uploadedData.push({ dataId: BigInt(1), cid: data1.cid, timestamp: data1.timestamp, metadata: data1.metadata })
-  if (data2) uploadedData.push({ dataId: BigInt(2), cid: data2.cid, timestamp: data2.timestamp, metadata: data2.metadata })
-  if (data3) uploadedData.push({ dataId: BigInt(3), cid: data3.cid, timestamp: data3.timestamp, metadata: data3.metadata })
-  if (data4) uploadedData.push({ dataId: BigInt(4), cid: data4.cid, timestamp: data4.timestamp, metadata: data4.metadata })
+  const { data: data6, error: error6 } = useReadContract({
+    address: NEURAL_DATA_CONTRACT,
+    abi: NEURAL_DATA_ABI,
+    functionName: 'getData',
+    args: count > 6 ? [BigInt(6)] : undefined,
+    query: { enabled: count > 6 }
+  })
+
+  const { data: data7, error: error7 } = useReadContract({
+    address: NEURAL_DATA_CONTRACT,
+    abi: NEURAL_DATA_ABI,
+    functionName: 'getData',
+    args: count > 7 ? [BigInt(7)] : undefined,
+    query: { enabled: count > 7 }
+  })
+
+  const { data: data8, error: error8 } = useReadContract({
+    address: NEURAL_DATA_CONTRACT,
+    abi: NEURAL_DATA_ABI,
+    functionName: 'getData',
+    args: count > 8 ? [BigInt(8)] : undefined,
+    query: { enabled: count > 8 }
+  })
+
+  const { data: data9, error: error9 } = useReadContract({
+    address: NEURAL_DATA_CONTRACT,
+    abi: NEURAL_DATA_ABI,
+    functionName: 'getData',
+    args: count > 9 ? [BigInt(9)] : undefined,
+    query: { enabled: count > 9 }
+  })
+
+  const uploadedData: UploadedData[] = []
+  const dataItems = [data0, data1, data2, data3, data4, data5, data6, data7, data8, data9]
+  const errors = [error0, error1, error2, error3, error4, error5, error6, error7, error8, error9]
+
+  for (let i = 0; i < count && i < dataItems.length; i++) {
+    if (dataItems[i]) {
+      uploadedData.push({
+        dataId: BigInt(i),
+        cid: dataItems[i]!.cid,
+        timestamp: dataItems[i]!.timestamp,
+        metadata: dataItems[i]!.metadata
+      })
+    }
+  }
 
   const isLoading = isLoadingCount
+  // Aggregate errors - use first error found
+  const allErrors = [countError, ...errors]
+  const error = allErrors.find(e => e !== undefined && e !== null) as Error | null
 
   return {
     uploadedData,
     isLoading,
-    error: null,
+    error: error?.message ?? null,
     refetch: refetchCount,
   }
 }
