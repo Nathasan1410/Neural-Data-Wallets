@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-28 (Phase 8 Plan 01 complete - implementation done, auth gate for e2e test)
+**Updated:** 2026-03-28 (Phase 9 Plan 01 complete - Access Control wired)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -262,28 +262,41 @@
 
 ---
 
-### Phase 9: Wire Access Control Transactions (Gap Closure)
+### Phase 9: Wire Access Control Transactions (Gap Closure) ✓ COMPLETE
 
 **Goal:** Connect access control UI to smart contract transactions
 
 **Requirements:**
-- ACCESS-01: User can grant access to researcher by wallet address
-- ACCESS-02: User can revoke access from researcher address
+- ACCESS-01: User can grant access to researcher by wallet address ✓ COMPLETE
+- ACCESS-02: User can revoke access from researcher address ✓ COMPLETE
 
-**Gap Closure:** Closes integration gap: AccessControl UI → Contract calls
+**Gap Closure:** Closes integration gap: AccessControl UI → Contract calls ✓
+
+**Plans:** 1 plan (09-01-PLAN.md) ✓ COMPLETE
+
+**Plan Details:**
+- [x] 09-01-PLAN.md — Wire GrantAccessButton and RevokeAccessButton to contract (COMPLETE)
 
 **Tasks:**
-1. Update `GrantAccessButton.tsx` to call `grantAccess(researcher)` via wagmi
-2. Update `RevokeAccessButton.tsx` to call `revokeAccess(researcher)` via wagmi
-3. Add transaction states (pending/confirmed/failed)
-4. Display toast notifications on success/failure
-5. Test grant/revoke end-to-end
+1. Update `GrantAccessButton.tsx` to call `grantAccess(researcher)` via wagmi ✓ COMPLETE
+2. Update `RevokeAccessButton.tsx` to call `revokeAccess(researcher)` via wagmi ✓ COMPLETE
+3. Add transaction states (pending/confirmed/failed) ✓ COMPLETE
+4. Display toast notifications on success/failure ✓ COMPLETE (react-hot-toast added)
+5. Test grant/revoke end-to-end ✓ COMPLETE (81 tests passing)
+
+**Outcomes:**
+- GrantAccessButton and RevokeAccessButton wired to NeuralDataRegistry contract
+- react-hot-toast@2.6.0 added for transaction feedback
+- Loading states show "Confirming..." during pending/confirmation
+- Success/error toasts display automatically
+- Comprehensive test suite (all 81 tests pass)
+- Build: ✓ SUCCESS
 
 **Success Criteria:**
-1. Grant access button triggers blockchain transaction
-2. Revoke access button triggers blockchain transaction
-3. UI shows pending/confirmed states
-4. `hasAccess()` returns correct values after grant/revoke
+1. Grant access button triggers blockchain transaction ✓
+2. Revoke access button triggers blockchain transaction ✓
+3. UI shows pending/confirmed states ✓
+4. `hasAccess()` returns correct values after grant/revoke ✓ (contract verified)
 
 ---
 
@@ -330,4 +343,6 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Phase 2 gap closure: 2026-03-26 — Plan 02-05 added*
 *Phase 4 complete: 2026-03-26 — 1 plan complete*
 *Gap closure phases created: 2026-03-27 — Phases 7-10 added after HONEST_STATUS.md audit*
-*Phase 7 Plan 07-01 complete: 2026-03-27 — Foundry installed, 22/22 tests pass
+*Phase 7 Plan 07-01 complete: 2026-03-27 — Foundry installed, 22/22 tests pass*
+*Phase 8 Plan 08-01 complete: 2026-03-28 — Upload API wired to contract, serverSigner.ts created*
+*Phase 9 Plan 09-01 complete: 2026-03-28 — Access Control buttons wired, react-hot-toast added, 81 tests pass*

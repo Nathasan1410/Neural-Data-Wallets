@@ -1,8 +1,8 @@
 # STATE.md - Neural Data Wallets
 
-**Current Phase:** Phase 8 - Wire Upload to Contract Storage (Gap Closure)
+**Current Phase:** Phase 9 - Wire Access Control Transactions (Gap Closure)
 **Current Mode:** YOLO (auto-approve, just execute)
-**Last Transition:** 2026-03-28 - Phase 8 Plan 01 implementation complete, auth gate for testing
+**Last Transition:** 2026-03-28 - Phase 9 Plan 01 implementation complete
 
 ---
 
@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 8 - Upload Contract Wiring
+**Current focus:** Phase 9 - Access Control Wiring
 
 ---
 
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 | 6 | Polish & Deployment | ○ | 0/0 | 0% |
 | 7 | Foundry Verification | ✓ | 2/2 | COMPLETE - Deployed & Verified |
 | 8 | Upload Contract Wiring | ⚠ | 1/1 | Implementation complete, auth gate for e2e test |
-| 9 | Access Control Wiring | ● | 1/1 | PLAN CREATED |
+| 9 | Access Control Wiring | ✓ | 1/1 | COMPLETE - Grant/Revoke wired with toast feedback |
 | 10 | Patient Dashboard Flow | ● | 1/1 | PLAN CREATED |
 
 ---
@@ -41,11 +41,11 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 |----------|----------|-------|----------|
 | Authentication | 3 | 3 | 100% |
 | IPFS Data | 3/4 | 4 | 75% |
-| Access Control | 3/5 | 5 | 60% |
+| Access Control | 5/5 | 5 | 100% |
 | Researcher | 0 | 3 | 0% |
 | Smart Contract | 5/6 | 6 | 83% |
 
-**Coverage:** 15/21 complete (71%) - after Phase 8 Plan 01 complete
+**Coverage:** 17/21 complete (81%) - after Phase 9 Plan 01 complete
 
 ---
 
@@ -130,10 +130,12 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 - [x] Handle contract errors gracefully
 - [ ] E2E test blocked - PRIVATE_KEY truncated in .env.local
 
-#### Phase 9: Access Control Wiring ● PLAN READY
-- [ ] Wire GrantAccessButton to contract
-- [ ] Wire RevokeAccessButton to contract
-- [ ] Test grant/revoke flow
+#### Phase 9: Access Control Wiring ✓ COMPLETE
+- [x] Wire GrantAccessButton to contract with wagmi hooks
+- [x] Wire RevokeAccessButton to contract with wagmi hooks
+- [x] Add react-hot-toast for transaction feedback
+- [x] Create comprehensive tests (all 81 tests pass)
+- [x] Build: ✓ SUCCESS
 
 #### Phase 10: Patient Dashboard Flow ● PLAN READY
 - [ ] Verify data displays after upload
@@ -141,4 +143,4 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 ---
 
-*Last updated: 2026-03-28 - Phase 8 Plan 01 COMPLETE (serverSigner.ts created, upload API wired to contract, tests passing, auth gate for e2e verification)*
+*Last updated: 2026-03-28 - Phase 9 Plan 01 COMPLETE (Grant/Revoke buttons wired to contract, react-hot-toast added, 81 tests passing)*
