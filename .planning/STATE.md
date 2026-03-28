@@ -27,7 +27,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 10 - Patient Dashboard Data Flow (error handling, data display verification)
+**Current focus:** Phase 5 COMPLETE - Researcher dashboard implemented with wallet connection, data display, and access denied error handling
 
 ---
 
@@ -38,8 +38,8 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 | 1 | Smart Contract Foundation | ✓ | 3/3 | COMPLETE - Deployed & Verified |
 | 2 | IPFS Integration | ✓ | 5/5 | COMPLETE - E2E Verified |
 | 3 | Frontend Shell & Auth | ✓ | 1/1 | 100% |
-| 4 | Patient Dashboard | ⚠ | 1/1 | UI exists, data flow untested |
-| 5 | Researcher Dashboard | ⚠ | 1/3 | 33% - ABI and hook created |
+| 4 | Patient Dashboard | ✓ | 1/1 | COMPLETE - Data flow verified |
+| 5 | Researcher Dashboard | ✓ | 3/3 | COMPLETE - All plans executed |
 | 6 | Polish & Deployment | ○ | 0/0 | 0% |
 | 7 | Foundry Verification | ✓ | 2/2 | COMPLETE - Deployed & Verified |
 | 8 | Upload Contract Wiring | ✓ | 1/1 | COMPLETE - E2E VERIFIED |
@@ -58,10 +58,10 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 | Authentication | 3 | 3 | 100% |
 | IPFS Data | 4/4 | 4 | 100% |
 | Access Control | 5/5 | 5 | 100% |
-| Researcher | 0 | 3 | 0% |
+| Researcher | 3/3 | 3 | 100% |
 | Smart Contract | 6/6 | 6 | 100% |
 
-**Coverage:** 18/21 complete (86%) - after Phase 8 E2E verification
+**Coverage:** 21/21 complete (100%) - Phase 5 COMPLETE
 
 **Test Coverage:** 73.24% overall (117 tests passing) - Phase 11 COMPLETE
 - Components: 92.92% ✓
@@ -139,10 +139,14 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 - [x] Error handling added for contract read failures - Phase 10
 - [x] Build: ✓ SUCCESS
 
-### Phase 5: Researcher Dashboard ✓ ABI AND HOOK CREATED
+### Phase 5: Researcher Dashboard ✓ COMPLETE
 - [x] NEURAL_DATA_ABI extended with getAllAccessibleData, getDataByOwnerPaginated, hasAccessToData
 - [x] useResearcherData hook created with IPFS fetching from Pinata gateway
-- [x] 10 new tests added for ABI and hook (23 total new tests in Phase 5)
+- [x] AccessibleDataList component with CID truncation, timestamp formatting, IPFS links
+- [x] IPFSDataViewer component for EEG JSON data display
+- [x] Researcher dashboard page at /researcher route with wallet connection states
+- [x] Access denied error handling (RES-03) with toast notifications
+- [x] 15 new tests added (6 page + 9 hook)
 - [x] Build: ✓ SUCCESS
 
 ### Gap Closure Phases
@@ -193,16 +197,15 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 | /api/ipfs/upload/route.ts | 87.5% | ✅ GOOD |
 | Pages (app/) | 0% | ⚠️ GAP (low priority) |
 
-**Total Tests:** 104 passing (+10 from Phase 5 Plan 05-01)
+**Total Tests:** 119 passing (+15 from Phase 5)
 
 ---
 
 ## Next Actions (Priority Order)
 
-1. **Implement Researcher Dashboard** (Phase 5, 2-3 hours)
-2. **E2E test automation** (Playwright, 1-2 hours)
-3. **Polish & Deployment** (Phase 6 - loading states, error handling, testnet deploy)
+1. **E2E test automation** (Playwright, 1-2 hours) - Phase 6
+2. **Polish & Deployment** (Phase 6 - loading states, error handling, testnet deploy)
 
 ---
 
-*Last updated: 2026-03-28 - Phase 10 COMPLETE (error handling added), Phase 11 COMPLETE (73.24% coverage), 94 tests passing*
+*Last updated: 2026-03-28 - Phase 5 COMPLETE (researcher dashboard), Phase 10 COMPLETE (error handling), Phase 11 COMPLETE (73.24% coverage), 119 tests passing*
