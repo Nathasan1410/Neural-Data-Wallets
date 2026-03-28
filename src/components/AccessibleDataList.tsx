@@ -6,7 +6,7 @@ interface AccessibleDataListProps {
   data: AccessibleData[]
   isLoading: boolean
   error: string | null
-  ipfsLoading: Record<string, boolean>
+  ipfsLoading: boolean
 }
 
 export function AccessibleDataList({
@@ -98,7 +98,7 @@ export function AccessibleDataList({
               <td className="px-4 py-3 text-sm text-gray-700">
                 {item.ipfsError ? (
                   <span className="text-red-600">{item.ipfsError}</span>
-                ) : ipfsLoading[item.dataId.toString()] ? (
+                ) : ipfsLoading ? (
                   <span className="text-gray-500">Loading...</span>
                 ) : (
                   <pre className="text-xs bg-gray-50 p-2 rounded max-w-xs overflow-hidden text-ellipsis">

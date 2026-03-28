@@ -28,7 +28,7 @@ describe('AccessibleDataList', () => {
         data={[]}
         isLoading={true}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByTestId('loading')).toBeInTheDocument()
@@ -40,7 +40,7 @@ describe('AccessibleDataList', () => {
         data={[]}
         isLoading={false}
         error="Network error"
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByTestId('error')).toBeInTheDocument()
@@ -53,7 +53,7 @@ describe('AccessibleDataList', () => {
         data={[]}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByTestId('empty')).toBeInTheDocument()
@@ -66,7 +66,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByTestId('data-table')).toBeInTheDocument()
@@ -78,7 +78,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByText('ID')).toBeInTheDocument()
@@ -94,7 +94,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     const truncatedCid = screen.getByText(/Qm[A-F0-9]{4}\.\.\.[A-F0-9]{4}/)
@@ -107,7 +107,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     const dates = screen.getAllByText(/2024/)
@@ -120,7 +120,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     const links = screen.getAllByText('View on IPFS')
@@ -133,7 +133,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     const links = screen.getAllByText('View on IPFS')
@@ -149,7 +149,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByText('#0')).toBeInTheDocument()
@@ -162,7 +162,7 @@ describe('AccessibleDataList', () => {
         data={mockData}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     // Should show JSON preview of ipfsData
@@ -185,7 +185,7 @@ describe('AccessibleDataList', () => {
         data={dataWithError}
         isLoading={false}
         error={null}
-        ipfsLoading={{}}
+        ipfsLoading={false}
       />
     )
     expect(screen.getByText('Failed to fetch from IPFS')).toBeInTheDocument()
