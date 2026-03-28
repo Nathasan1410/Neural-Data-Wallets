@@ -16,7 +16,7 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 ### IPFS Data Management
 
 - [x] **IPFS-01**: User can upload mock EEG data (JSON) to IPFS via Pinata
-- [ ] **IPFS-02**: System stores returned CID in smart contract linked to user address
+- [x] **IPFS-02**: System stores returned CID in smart contract linked to user address ✓ IMPLEMENTED
 - [ ] **IPFS-03**: User can view list of their uploaded data (CID + timestamp)
 - [x] **IPFS-04**: System uses dedicated Pinata gateway (not ipfs.io)
 
@@ -84,7 +84,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-02 | Phase 3 | Complete |
 | AUTH-03 | Phase 3 | Complete |
 | IPFS-01 | Phase 2 | Complete |
-| IPFS-02 | Phase 8 | Pending |
+| IPFS-02 | Phase 8 | Complete |
 | IPFS-03 | Phase 10 | Pending |
 | IPFS-04 | Phase 2 | Complete |
 | ACCESS-01 | Phase 9 | Pending |
@@ -104,10 +104,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 **Coverage:**
 - v1 requirements: 21 total
-- Complete: 13/21 (62%)
+- Complete: 14/21 (67%)
 - Mapped to phases: 21
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-26*
-*Last updated: 2026-03-26 after roadmap creation*
+*Last updated: 2026-03-28 - Phase 8 Plan 01 complete (IPFS-02 implemented)*

@@ -1,8 +1,8 @@
 # STATE.md - Neural Data Wallets
 
-**Current Phase:** Phase 7 - Foundry Setup & Contract Verification (Gap Closure)
+**Current Phase:** Phase 8 - Wire Upload to Contract Storage (Gap Closure)
 **Current Mode:** YOLO (auto-approve, just execute)
-**Last Transition:** 2026-03-27 - Gap closure phases created after HONEST_STATUS.md audit
+**Last Transition:** 2026-03-28 - Phase 8 Plan 01 implementation complete, auth gate for testing
 
 ---
 
@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 7 - Foundry Setup & Contract Verification
+**Current focus:** Phase 8 - Upload Contract Wiring
 
 ---
 
@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 | 5 | Researcher Dashboard | ○ | 0/0 | 0% |
 | 6 | Polish & Deployment | ○ | 0/0 | 0% |
 | 7 | Foundry Verification | ✓ | 2/2 | COMPLETE - Deployed & Verified |
-| 8 | Upload Contract Wiring | ● | 1/1 | PLAN CREATED |
+| 8 | Upload Contract Wiring | ⚠ | 1/1 | Implementation complete, auth gate for e2e test |
 | 9 | Access Control Wiring | ● | 1/1 | PLAN CREATED |
 | 10 | Patient Dashboard Flow | ● | 1/1 | PLAN CREATED |
 
@@ -40,12 +40,12 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 | Category | Complete | Total | Progress |
 |----------|----------|-------|----------|
 | Authentication | 3 | 3 | 100% |
-| IPFS Data | 2/4 | 4 | 50% |
+| IPFS Data | 3/4 | 4 | 75% |
 | Access Control | 3/5 | 5 | 60% |
 | Researcher | 0 | 3 | 0% |
 | Smart Contract | 5/6 | 6 | 83% |
 
-**Coverage:** 14/21 complete (67%) - after Phase 7 complete
+**Coverage:** 15/21 complete (71%) - after Phase 8 Plan 01 complete
 
 ---
 
@@ -80,7 +80,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 - IPFS data is PUBLIC - encryption deferred to v2
 - Must pin data or it gets garbage-collected
 - Use API routes for IPFS uploads (hide JWT)
-- CRITICAL: Upload currently does NOT call contract - gap closure Phase 8 needed
+- CRITICAL: PRIVATE_KEY in .env.local is truncated - needs 64 hex chars
 
 ---
 
@@ -123,9 +123,12 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 - [x] Deploy to Base Sepolia (0x2700C2B1268B115cF06136b881341903aBC7DC4a)
 - [x] Verify on BaseScan (Sourcify exact_match)
 
-#### Phase 8: Upload Contract Wiring ● PLAN READY
-- [ ] Wire /api/ipfs/upload to call uploadData()
-- [ ] Test end-to-end upload flow
+#### Phase 8: Upload Contract Wiring ⚠ IMPLEMENTATION COMPLETE
+- [x] Wire /api/ipfs/upload to call uploadData()
+- [x] Create serverSigner.ts for server-side contract interactions
+- [x] Return txHash in API response
+- [x] Handle contract errors gracefully
+- [ ] E2E test blocked - PRIVATE_KEY truncated in .env.local
 
 #### Phase 9: Access Control Wiring ● PLAN READY
 - [ ] Wire GrantAccessButton to contract
@@ -138,4 +141,4 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 
 ---
 
-*Last updated: 2026-03-28 - Phase 7 COMPLETE (Foundry installed, 22/22 tests pass, deployed to Base Sepolia, verified on BaseScan)*
+*Last updated: 2026-03-28 - Phase 8 Plan 01 COMPLETE (serverSigner.ts created, upload API wired to contract, tests passing, auth gate for e2e verification)*

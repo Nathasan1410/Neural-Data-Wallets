@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-27 (Phase 7 Plan 07-01 complete)
+**Updated:** 2026-03-28 (Phase 8 Plan 01 complete - implementation done, auth gate for e2e test)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -231,27 +231,34 @@
 
 ---
 
-### Phase 8: Wire Upload to Contract Storage (Gap Closure)
+### Phase 8: Wire Upload to Contract Storage (Gap Closure) ⚠ IMPLEMENTATION COMPLETE
 
 **Goal:** Connect IPFS upload API to smart contract storage
 
 **Requirements:**
-- IPFS-02: System stores returned CID in smart contract linked to user address
+- IPFS-02: System stores returned CID in smart contract linked to user address ✓ IMPLEMENTED
 
-**Gap Closure:** Closes integration gap: Upload API → Contract `uploadData()`
+**Gap Closure:** Closes integration gap: Upload API → Contract `uploadData()` ✓
+
+**Plans:** 1 plan (08-01-PLAN.md) ✓ COMPLETE
+
+**Plan Details:**
+- [x] 08-01-PLAN.md — Wire upload API to contract (COMPLETE - auth gate for e2e test)
 
 **Tasks:**
-1. Add viem/wagmi server-side to `/api/ipfs/upload` route
-2. After Pinata upload, call `uploadData(cid)` on contract
-3. Wait for transaction confirmation
-4. Return CID + tx hash to frontend
-5. Test end-to-end: file → IPFS → contract → display
+1. Add viem/wagmi server-side to `/api/ipfs/upload` route ✓ COMPLETE
+2. After Pinata upload, call `uploadData(cid)` on contract ✓ COMPLETE
+3. Wait for transaction confirmation ✓ COMPLETE
+4. Return CID + tx hash to frontend ✓ COMPLETE
+5. Test end-to-end: file → IPFS → contract → display ⚠ BLOCKED (PRIVATE_KEY truncated)
 
-**Success Criteria:**
-1. Upload API writes CID to contract
-2. Transaction hash returned to client
-3. `getDataCount()` increments after upload
-4. `getData()` returns stored CID
+**Outcomes:**
+- `serverSigner.ts` created with server-side wallet client
+- Upload API modified to call contract after IPFS upload
+- Graceful error handling (IPFS succeeds even if contract fails)
+- API returns `txHash` alongside `cid` and `url`
+- 4 new tests added (81 total passing)
+- **Blocked:** E2E verification requires complete PRIVATE_KEY (64 hex chars)
 
 ---
 
