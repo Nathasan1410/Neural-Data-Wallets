@@ -30,8 +30,8 @@ Requirements for initial 8-hour sprint release. Each maps to roadmap phases.
 
 ### Researcher Dashboard
 
-- [ ] **RES-01**: Researcher can view list of CIDs they have access to
-- [ ] **RES-02**: Researcher can fetch and display EEG data from IPFS
+- [ ] **RES-01**: Researcher can view list of CIDs they have access to (50% - hook implemented)
+- [ ] **RES-02**: Researcher can fetch and display EEG data from IPFS (50% - hook implemented)
 - [ ] **RES-03**: Researcher sees "access denied" if trying to access without grant
 
 ### Smart Contract
@@ -92,8 +92,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ACCESS-03 | Phase 4 | Complete |
 | ACCESS-04 | Phase 1 | Complete |
 | ACCESS-05 | Phase 1 | Complete |
-| RES-01 | Phase 5 | Pending |
-| RES-02 | Phase 5 | Pending |
+| RES-01 | Phase 5 | 50% - useResearcherData hook |
+| RES-02 | Phase 5 | 50% - IPFS fetching implemented |
 | RES-03 | Phase 5 | Pending |
 | CONTRACT-01 | Phase 7 | Pending |
 | CONTRACT-02 | Phase 1 | Complete |

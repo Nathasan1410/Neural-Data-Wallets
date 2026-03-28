@@ -16,7 +16,7 @@ progress:
 
 **Current Phase:** 11
 **Current Mode:** YOLO (auto-approve, just execute)
-**Last Transition:** 2026-03-28 - Phase 5 Plan 05-02 executed, AccessibleDataList and IPFSDataViewer components created, 117 tests passing
+**Last Transition:** 2026-03-28 - Phase 5 Plan 05-01 executed, ABI definitions added and useResearcherData hook created
 
 ---
 
@@ -39,7 +39,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 | 2 | IPFS Integration | ✓ | 5/5 | COMPLETE - E2E Verified |
 | 3 | Frontend Shell & Auth | ✓ | 1/1 | 100% |
 | 4 | Patient Dashboard | ⚠ | 1/1 | UI exists, data flow untested |
-| 5 | Researcher Dashboard | ⚠ | 1/3 | 33% - Components created |
+| 5 | Researcher Dashboard | ⚠ | 1/3 | 33% - ABI and hook created |
 | 6 | Polish & Deployment | ○ | 0/0 | 0% |
 | 7 | Foundry Verification | ✓ | 2/2 | COMPLETE - Deployed & Verified |
 | 8 | Upload Contract Wiring | ✓ | 1/1 | COMPLETE - E2E VERIFIED |
@@ -139,11 +139,10 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 - [x] Error handling added for contract read failures - Phase 10
 - [x] Build: ✓ SUCCESS
 
-### Phase 5: Researcher Dashboard ✓ COMPONENTS CREATED
-- [x] AccessibleDataList component with loading, error, empty, data states
-- [x] IPFSDataViewer component for JSON EEG data display
-- [x] useResearcherData hook interface created (stub for 05-03)
-- [x] 20 new tests added (117 total passing)
+### Phase 5: Researcher Dashboard ✓ ABI AND HOOK CREATED
+- [x] NEURAL_DATA_ABI extended with getAllAccessibleData, getDataByOwnerPaginated, hasAccessToData
+- [x] useResearcherData hook created with IPFS fetching from Pinata gateway
+- [x] 10 new tests added for ABI and hook (23 total new tests in Phase 5)
 - [x] Build: ✓ SUCCESS
 
 ### Gap Closure Phases
@@ -194,7 +193,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 | /api/ipfs/upload/route.ts | 87.5% | ✅ GOOD |
 | Pages (app/) | 0% | ⚠️ GAP (low priority) |
 
-**Total Tests:** 117 passing (+23 from Phase 5 Plan 05-02)
+**Total Tests:** 104 passing (+10 from Phase 5 Plan 05-01)
 
 ---
 

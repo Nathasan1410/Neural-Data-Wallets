@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-28 (Phase 11 added - Test Coverage Gap Closure)
+**Updated:** 2026-03-28 (Phase 5 Plan 05-01 complete - ABI and hook implemented)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -178,6 +178,10 @@
 5. EEG data displayed in readable format (JSON viewer or visualization)
 
 **Outcomes:**
+- useResearcherData hook implemented with getAllAccessibleData contract integration
+- NEURAL_DATA_ABI extended with getAllAccessibleData, getDataByOwnerPaginated, hasAccessToData
+- IPFS data fetching from Pinata gateway integrated in hook
+- 10 new tests added for ABI and hook (all passing)
 - Fully functional researcher dashboard
 - End-to-end access control verified
 
