@@ -2,7 +2,8 @@
 
 import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { NEURAL_DATA_ABI, NEURAL_DATA_CONTRACT } from '@/lib/contracts/neuralDataRegistry'
-import { useState } from 'react'
+import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 interface GrantAccessButtonProps {
   researcherAddress: string
@@ -10,12 +11,30 @@ interface GrantAccessButtonProps {
 }
 
 export function GrantAccessButton({ researcherAddress, onSuccess }: GrantAccessButtonProps) {
-  const { data: hash, writeContract, isPending, error } = useWriteContract()
+  const { data: hash, writeContract, isPending, error, reset } = useWriteContract()
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
     hash,
   })
 
+  useEffect(() => {
+    if (error) {
+      toast.error(`Failed to grant access: ${error.message}`)
+      reset()
+    }
+  }, [error, reset])
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Access granted successfully!')
+      onSuccess?.()
+    }
+  }, [isSuccess, onSuccess])
+
   const handleGrant = () => {
+    if (!researcherAddress) {
+      toast.error('Please enter a researcher address')
+      return
+    }
     writeContract({
       address: NEURAL_DATA_CONTRACT,
       abi: NEURAL_DATA_ABI,
@@ -27,22 +46,12 @@ export function GrantAccessButton({ researcherAddress, onSuccess }: GrantAccessB
   const isLoading = isPending || isConfirming
 
   return (
-    <div className="flex flex-col gap-2">
-      <button
-        onClick={handleGrant}
-        disabled={isLoading || !researcherAddress}
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {isLoading ? 'Confirming...' : 'Grant Access'}
-      </button>
-
-      {error && (
-        <p className="text-red-600 text-sm">Error: {error.message}</p>
-      )}
-
-      {isSuccess && (
-        <p className="text-green-600 text-sm">Access granted successfully!</p>
-      )}
-    </div>
+    <button
+      onClick={handleGrant}
+      disabled={isLoading || !researcherAddress}
+      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {isLoading ? 'Confirming...' : 'Grant Access'}
+    </button>
   )
 }
