@@ -4,12 +4,12 @@ milestone: v1.5
 milestone_name: milestone
 current_phase: 11
 status: unknown
-last_updated: "2026-03-28T13:31:07.981Z"
+last_updated: "2026-03-29T07:45:00.000Z"
 progress:
   total_phases: 11
   completed_phases: 7
   total_plans: 17
-  completed_plans: 13
+  completed_plans: 14
 ---
 
 # STATE.md - Neural Data Wallets
@@ -27,7 +27,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 6 PLANNING COMPLETE - Ready for execution (Wave 1: toast notifications + loading spinners, Wave 2: responsive design, Wave 3: Vercel + E2E)
+**Current focus:** Phase 6 EXECUTION IN PROGRESS - Plan 1 (toast notifications) COMPLETE, Wave 1 done; Ready for Wave 2 (responsive design) and Wave 3 (Vercel + E2E)
 
 ---
 
@@ -180,6 +180,12 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 - [x] Expanded data fetching from 5 to 20 items max
 - [x] All 94 tests passing, build successful
 
+#### Phase 6: Polish & Deployment - Plan 1 ✓ COMPLETE (2026-03-29)
+- [x] UploadButton toast notifications with txHash-aware messaging
+- [x] Parent-level toast callbacks on homepage and patient dashboard
+- [x] 5 new tests for toast behavior (150 total passing)
+- [x] Build succeeds
+
 ---
 
 ## Test Coverage Analysis (2026-03-28)
@@ -203,10 +209,22 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 
 ## Next Actions (Priority Order)
 
-1. **Execute Phase 6 Wave 1** - Toast notifications for UploadButton + visual loading spinners
-2. **Execute Phase 6 Wave 2** - Responsive design for mobile devices
+1. **Execute Phase 6 Wave 1** - Toast notifications for UploadButton + visual loading spinners ✓ COMPLETE
+2. **Execute Phase 6 Wave 2** - Responsive design for mobile devices (Plan 02, 03, 04)
 3. **Execute Phase 6 Wave 3** - Vercel deployment + Playwright E2E tests
 
 ---
 
-*Last updated: 2026-03-29 - Phase 6 PLANNING COMPLETE (4 plans in 3 waves), ready for execution*
+### Phase 6: Polish & Deployment ✓ WAVE 1 COMPLETE
+
+- [x] **Plan 01 (06-01):** Toast notifications wired to UploadButton
+- [x] **Plan 02 (06-02):** Visual loading spinners added to all async operations
+  - UploadButton: Spinner in both buttons with animate-spin
+  - UploadedDataList: Centered spinner with "Loading data..." text
+  - AccessibleDataList: Centered spinner with "Loading accessible data..." text
+  - Created loadingTestUtils.ts with reusable test helpers
+  - 13 new tests added (42 total tests for spinner components)
+
+---
+
+*Last updated: 2026-03-29 - Phase 6 Wave 1 COMPLETE (06-02: Loading spinners implemented)*
