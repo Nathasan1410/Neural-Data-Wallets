@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { generateMockEegData, eegDataToJson } from '@/lib/mockEegData'
+import toast from 'react-hot-toast'
 
 interface UploadButtonProps {
   onUploadComplete?: (cid: string, url: string) => void
@@ -27,13 +28,24 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
       })
 
       if (!response.ok) {
-        throw new Error('Upload failed')
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Upload failed')
       }
 
       const data = await response.json()
+
+      // Show success toast based on whether txHash is present
+      if (data.txHash) {
+        toast.success('Data uploaded and stored on-chain!')
+      } else {
+        toast.success('Data uploaded to IPFS (contract storage pending)')
+      }
+
       onUploadComplete?.(data.cid, data.url)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Upload failed')
+      const errorMessage = err instanceof Error ? err.message : 'Upload failed'
+      toast.error(errorMessage)
+      setError(errorMessage)
     } finally {
       setUploading(false)
     }
@@ -44,17 +56,14 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
     setError(null)
 
     try {
-      // Generate mock EEG data
       const eegData = generateMockEegData(userId)
       const jsonString = eegDataToJson(eegData)
 
-      // Create file from JSON
       const blob = new Blob([jsonString], { type: 'application/json' })
       const file = new File([blob], `eeg-${userId}-${Date.now()}.json`, {
         type: 'application/json',
       })
 
-      // Upload to IPFS
       const formData = new FormData()
       formData.append('file', file)
 
@@ -64,13 +73,24 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
       })
 
       if (!response.ok) {
-        throw new Error('Upload failed')
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Upload failed')
       }
 
       const data = await response.json()
+
+      // Show success toast based on whether txHash is present
+      if (data.txHash) {
+        toast.success('Data uploaded and stored on-chain!')
+      } else {
+        toast.success('Data uploaded to IPFS (contract storage pending)')
+      }
+
       onUploadComplete?.(data.cid, data.url)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Upload failed')
+      const errorMessage = err instanceof Error ? err.message : 'Upload failed'
+      toast.error(errorMessage)
+      setError(errorMessage)
     } finally {
       setUploading(false)
     }
@@ -84,35 +104,51 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-2">
-        <button
-          onClick={() => fileInputRef.current?.click()}
-          disabled={uploading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {uploading ? 'Uploading...' : 'Upload File'}
-        </button>
+    <div>
+      <button
+        onClick={() => fileInputRef.current?.click()}
+        disabled={uploading}
+        data-testid="upload-file-btn"
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+      >
+        {uploading && (
+          <div
+            className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4"
+            data-testid="spinner"
+            role="status"
+          />
+        )}
+        <span>{uploading ? 'Uploading...' : 'Upload File'}</span>
+      </button>
 
-        <button
-          onClick={handleGenerateAndUpload}
-          disabled={uploading}
-          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {uploading ? 'Generating...' : 'Generate Mock EEG'}
-        </button>
-      </div>
+      <button
+        onClick={handleGenerateAndUpload}
+        disabled={uploading}
+        data-testid="generate-mock-btn"
+        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+      >
+        {uploading && (
+          <div
+            className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4"
+            data-testid="spinner"
+            role="status"
+          />
+        )}
+        <span>{uploading ? 'Generating...' : 'Generate Mock EEG'}</span>
+      </button>
 
       <input
         ref={fileInputRef}
         type="file"
         accept=".json,.csv"
         onChange={handleFileSelect}
-        className="hidden"
+        style={{ display: 'none' }}
       />
 
       {error && (
-        <p className="text-red-600 text-sm">{error}</p>
+        <div data-testid="upload-error" style={{ color: 'red' }}>
+          {error}
+        </div>
       )}
     </div>
   )
