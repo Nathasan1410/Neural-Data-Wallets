@@ -9,14 +9,14 @@ progress:
   total_phases: 11
   completed_phases: 7
   total_plans: 17
-  completed_plans: 14
+  completed_plans: 15
 ---
 
 # STATE.md - Neural Data Wallets
 
 **Current Phase:** 6
 **Current Mode:** YOLO (auto-approve, just execute)
-**Last Transition:** 2026-03-29 - Phase 6 planning complete (4 plans in 3 waves), ready for execution
+**Last Transition:** 2026-03-29 - Phase 6 COMPLETE (4/4 plans executed), Wave 3 done (Vercel + E2E)
 
 ---
 
@@ -27,7 +27,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 6 EXECUTION IN PROGRESS - Plan 1 (toast notifications) COMPLETE, Wave 1 done; Ready for Wave 2 (responsive design) and Wave 3 (Vercel + E2E)
+**Current focus:** Phase 6 COMPLETE - All 4 plans executed (toast notifications, loading spinners, responsive design, Vercel + E2E tests)
 
 ---
 
@@ -40,7 +40,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 | 3 | Frontend Shell & Auth | ✓ | 1/1 | 100% |
 | 4 | Patient Dashboard | ✓ | 1/1 | COMPLETE - Data flow verified |
 | 5 | Researcher Dashboard | ✓ | 3/3 | COMPLETE - All plans executed |
-| 6 | Polish & Deployment | ✓ | 4/4 | PLANNING COMPLETE - 4 plans in 3 waves |
+| 6 | Polish & Deployment | ✓ | 4/4 | COMPLETE - All 4 plans executed |
 | 7 | Foundry Verification | ✓ | 2/2 | COMPLETE - Deployed & Verified |
 | 8 | Upload Contract Wiring | ✓ | 1/1 | COMPLETE - E2E VERIFIED |
 | 9 | Access Control Wiring | ✓ | 1/1 | COMPLETE - 89 tests passing |
@@ -92,6 +92,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 - pinata-web3 0.5.x for IPFS
 - Vitest 4.x + Testing Library for tests
 - react-hot-toast 2.6.0 for notifications
+- Playwright 1.58.2 for E2E tests
 
 **Key Decisions Made:**
 - Using Pinata (not self-hosted IPFS) for hackathon speed
@@ -99,6 +100,7 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 - Mock EEG data (not real processing)
 - Base Sepolia target network
 - Graceful error handling (IPFS succeeds even if contract fails)
+- Simple window.ethereum mock for E2E tests (synpress for full wallet testing)
 
 **Pitfalls to Avoid:**
 - IPFS data is PUBLIC - encryption deferred to v2
@@ -209,13 +211,21 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 
 ## Next Actions (Priority Order)
 
-1. **Execute Phase 6 Wave 1** - Toast notifications for UploadButton + visual loading spinners ✓ COMPLETE
-2. **Execute Phase 6 Wave 2** - Responsive design for mobile devices (Plan 03) ✓ COMPLETE
-3. **Execute Phase 6 Wave 3** - Vercel deployment + Playwright E2E tests
+**PHASE 6 COMPLETE** - All 4 plans executed successfully:
+1. ✓ Toast notifications for UploadButton
+2. ✓ Visual loading spinners for async operations
+3. ✓ Responsive design for mobile devices
+4. ✓ Vercel deployment configuration + Playwright E2E tests
+
+**Ready for Vercel Deployment:**
+1. Push code to GitHub
+2. Import repository to Vercel
+3. Configure environment variables from .env.example
+4. Deploy to production
 
 ---
 
-### Phase 6: Polish & Deployment ✓ WAVE 2 COMPLETE
+### Phase 6: Polish & Deployment ✓ COMPLETE
 
 - [x] **Plan 01 (06-01):** Toast notifications wired to UploadButton
 - [x] **Plan 02 (06-02):** Visual loading spinners added to all async operations
@@ -230,7 +240,15 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
   - Researcher Dashboard: Same responsive patterns, E2E test attributes preserved
   - UploadedDataList: overflow-x-auto wrapper, horizontal scrolling tables
   - All 150 tests passing, build successful
+- [x] **Plan 04 (06-04):** Vercel deployment + E2E tests
+  - vercel.json created with Next.js build configuration
+  - .env.example updated with all NEXT_PUBLIC_ variables
+  - playwright.config.ts created with desktop and mobile projects
+  - tests/e2e/flow.spec.ts - E2E flow tests (2 passing, 1 skipped)
+  - tests/e2e/responsive.spec.ts - Responsive design tests (4 passing)
+  - 12 E2E tests passing total
+  - pnpm next build succeeds
 
 ---
 
-*Last updated: 2026-03-29 - Phase 6 Wave 2 COMPLETE (06-03: Responsive design for all pages and tables)*
+*Last updated: 2026-03-29 - Phase 6 COMPLETE (06-04: Vercel deployment + E2E tests)*
