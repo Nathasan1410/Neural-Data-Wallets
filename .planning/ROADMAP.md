@@ -2,7 +2,7 @@
 
 **Project:** Neural Data Wallets (Web3 x Neurotech dApp)
 **Created:** 2026-03-26
-**Updated:** 2026-03-28 (Phase 5 Plan 05-01 complete - ABI and hook implemented)
+**Updated:** 2026-03-29 (Phase 6 planned - 4 plans in 3 waves)
 **Goal:** 8-hour sprint prototype for Protocol Labs sponsorship
 
 ---
@@ -16,7 +16,7 @@
 | 3 | Frontend Shell & Wallet Auth | Next.js + wagmi + RainbowKit setup | AUTH-01, AUTH-02, AUTH-03 | Wallet connects, address displays, session persists |
 | 4 | Patient Dashboard | Upload flow + access management UI | IPFS-03, ACCESS-03 | Patient sees their data, can grant/revoke access |
 | 5 | Researcher Dashboard | Data viewer for granted access | RES-01, RES-02, RES-03 | Researcher sees accessible data, can fetch from IPFS |
-| 6 | Polish & Deployment | Error handling, loading states, testnet deploy | All requirements verified | End-to-end flow works, deployed to Base/Sepolia testnet |
+| 6 | Polish & Deployment | Error handling, loading states, testnet deploy | DEPLOY-01 through DEPLOY-07 | End-to-end flow works, deployed to Vercel |
 
 ---
 
@@ -190,6 +190,28 @@
 ### Phase 6: Polish & Deployment
 
 **Goal:** Production-ready prototype deployed to testnet
+
+**Requirements:**
+- DEPLOY-01: Contract deployed to Base Sepolia (COMPLETE: 0x2700C2B1268B115cF06136b881341903aBC7DC4a)
+- DEPLOY-02: Frontend deployed to Vercel/Netlify
+- DEPLOY-03: End-to-end flow tested and working
+- DEPLOY-04: Responsive design (works on mobile)
+- DEPLOY-05: Error handling for all transactions
+- DEPLOY-06: Loading states for async operations
+- DEPLOY-07: Toast notifications for tx confirmation
+
+**Plans:** 4 plans
+
+**Plan Details:**
+- [ ] 06-01-PLAN.md — Toast notifications for UploadButton
+- [ ] 06-02-PLAN.md — Visual loading spinners for all async operations
+- [ ] 06-03-PLAN.md — Responsive design for all pages and tables
+- [ ] 06-04-PLAN.md — Vercel deployment config and Playwright E2E tests
+
+**Wave Structure:**
+- Wave 1: Plans 06-01, 06-02 (parallel - toast and loading states)
+- Wave 2: Plan 06-03 (depends on 06-02 - responsive design after loading components)
+- Wave 3: Plan 06-04 (depends on 06-01, 06-02, 06-03 - deployment and E2E)
 
 **Success Criteria:**
 1. Error handling for all transactions
@@ -413,3 +435,4 @@ Phase 3 (Auth) ──────────> Phase 4 (Patient) ───> Phas
 *Phase 10 Plan 10-01 complete: 2026-03-28 — Error handling added, 94 tests pass*
 *Phase 11 Plan 11-01 complete: 2026-03-28 — Hook tests + API route tests added, 73.24% coverage achieved*
 *Phase 5 planned: 2026-03-28 — 3 plans in 2 waves*
+*Phase 6 planned: 2026-03-29 — 4 plans in 3 waves*
