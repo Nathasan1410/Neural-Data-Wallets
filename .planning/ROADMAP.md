@@ -16,7 +16,7 @@
 | 3 | Frontend Shell & Wallet Auth | Next.js + wagmi + RainbowKit setup | AUTH-01, AUTH-02, AUTH-03 | Wallet connects, address displays, session persists |
 | 4 | Patient Dashboard | Upload flow + access management UI | IPFS-03, ACCESS-03 | Patient sees their data, can grant/revoke access |
 | 5 | Researcher Dashboard | Data viewer for granted access | RES-01, RES-02, RES-03 | Researcher sees accessible data, can fetch from IPFS |
-| 6 | Polish & Deployment | Error handling, loading states, testnet deploy | DEPLOY-01 through DEPLOY-07 | End-to-end flow works, deployed to Vercel |
+| 6 | 2/4 | In Progress|  | End-to-end flow works, deployed to Vercel |
 
 ---
 
@@ -200,7 +200,7 @@
 - DEPLOY-06: Loading states for async operations
 - DEPLOY-07: Toast notifications for tx confirmation
 
-**Plans:** 4 plans
+**Plans:** 2/4 plans executed
 
 **Plan Details:**
 - [x] 06-01-PLAN.md — Toast notifications for UploadButton (COMPLETE)
