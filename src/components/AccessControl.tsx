@@ -28,7 +28,7 @@ export function AccessControl({ onAccessGranted, onAccessRevoked }: AccessContro
             value={researcherAddress}
             onChange={(e) => setResearcherAddress(e.target.value)}
             placeholder="0x..."
-            className="w-full px-3 py-2 border rounded-lg"
+            className="min-h-[44px] w-full px-3 py-2 border rounded-lg"
           />
         </div>
 

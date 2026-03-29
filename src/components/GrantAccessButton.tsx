@@ -49,7 +49,7 @@ export function GrantAccessButton({ researcherAddress, onSuccess }: GrantAccessB
     <button
       onClick={handleGrant}
       disabled={isLoading || !researcherAddress}
-      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="min-h-[44px] px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {isLoading ? 'Confirming...' : 'Grant Access'}
     </button>

@@ -109,7 +109,7 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
         onClick={() => fileInputRef.current?.click()}
         disabled={uploading}
         data-testid="upload-file-btn"
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+        className="min-h-[44px] px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
       >
         {uploading && (
           <div
@@ -125,7 +125,7 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
         onClick={handleGenerateAndUpload}
         disabled={uploading}
         data-testid="generate-mock-btn"
-        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+        className="min-h-[44px] px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
       >
         {uploading && (
           <div

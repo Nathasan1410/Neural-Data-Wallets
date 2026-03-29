@@ -49,7 +49,7 @@ export function RevokeAccessButton({ researcherAddress, onSuccess }: RevokeAcces
     <button
       onClick={handleRevoke}
       disabled={isLoading || !researcherAddress}
-      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="min-h-[44px] px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {isLoading ? 'Confirming...' : 'Revoke Access'}
     </button>
