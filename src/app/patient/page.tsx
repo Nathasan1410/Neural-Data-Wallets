@@ -6,86 +6,61 @@ import { usePatientData } from '@/lib/hooks/usePatientData'
 import { UploadedDataList } from '@/components/UploadedDataList'
 import { UploadButton } from '@/components/UploadButton'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 export default function PatientPage() {
   const { isConnected } = useAccount()
   const { uploadedData, isLoading, error, refetch } = usePatientData()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleUploadComplete = () => {
-    // Refetch data after upload completes
+    toast.success('Data uploaded!')
     setTimeout(() => refetch(), 2000)
+  }
+
+  if (!mounted) {
+    return <div>[LOADING]</div>
   }
 
   if (!isConnected) {
     return (
-      <div className="min-h-screen p-8">
-        <div className="max-w-4xl mx-auto">
-          <header className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h1 className="text-3xl font-bold">Patient Dashboard</h1>
-              <ConnectButton />
-            </div>
-            <nav className="space-x-4 text-sm">
-              <Link href="/" className="text-gray-600 hover:text-gray-900">
-                Home
-              </Link>
-              <Link href="/patient" className="text-gray-900 font-medium">
-                Patient
-              </Link>
-              <Link href="/researcher" className="text-gray-600 hover:text-gray-900">
-                Researcher
-              </Link>
-            </nav>
-          </header>
-          <div className="p-8 bg-gray-50 rounded-lg text-center">
-            <p className="text-gray-600 mb-4">Connect your wallet to view your uploaded neural data</p>
-            <ConnectButton />
-          </div>
-        </div>
+      <div>
+        <h1>Patient Dashboard</h1>
+        <nav>
+          <Link href="/">Home</Link> |
+          <Link href="/patient">Patient</Link> |
+          <Link href="/researcher">Researcher</Link>
+        </nav>
+        <p>Connect your wallet to view your uploaded neural data</p>
+        <ConnectButton />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-4xl mx-auto">
-        <header className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold">Patient Dashboard</h1>
-            <ConnectButton />
-          </div>
-          <nav className="space-x-4 text-sm">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              Home
-            </Link>
-            <Link href="/patient" className="text-gray-900 font-medium">
-              Patient
-            </Link>
-            <Link href="/researcher" className="text-gray-600 hover:text-gray-900">
-              Researcher
-            </Link>
-          </nav>
-        </header>
+    <div>
+      <h1>Patient Dashboard</h1>
+      <nav>
+        <Link href="/">Home</Link> |
+        <Link href="/patient">Patient</Link> |
+        <Link href="/researcher">Researcher</Link>
+      </nav>
 
-        <main>
-          <section className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold">Your Uploaded Data</h2>
-              <div className="flex gap-2">
-                <UploadButton onUploadComplete={handleUploadComplete} />
-                <button
-                  onClick={() => refetch()}
-                  disabled={isLoading}
-                  className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded disabled:opacity-50"
-                >
-                  {isLoading ? 'Loading...' : 'Refresh'}
-                </button>
-              </div>
-            </div>
-            <UploadedDataList data={uploadedData} isLoading={isLoading} error={error} />
-          </section>
-        </main>
-      </div>
+      <section>
+        <h2>Your Uploaded Data</h2>
+        <div>
+          <UploadButton onUploadComplete={handleUploadComplete} />
+          <button onClick={() => refetch()} disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Refresh'}
+          </button>
+        </div>
+        <UploadedDataList data={uploadedData} isLoading={isLoading} error={error} />
+      </section>
     </div>
   )
 }

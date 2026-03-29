@@ -4,11 +4,13 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useAccount } from 'wagmi'
 import { UploadButton } from '@/components/UploadButton'
 import { AccessControl } from '@/components/AccessControl'
+import toast from 'react-hot-toast'
 
 export default function Home() {
   const { isConnected, address } = useAccount()
 
   const handleUploadComplete = (cid: string, url: string) => {
+    toast.success('Data uploaded!')
     console.log('Upload complete:', cid, url)
   }
 

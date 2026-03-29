@@ -34,6 +34,21 @@ describe('AccessibleDataList', () => {
     expect(screen.getByTestId('loading')).toBeInTheDocument()
   })
 
+  it('should show spinner while loading', () => {
+    render(
+      <AccessibleDataList
+        data={[]}
+        isLoading={true}
+        error={null}
+        ipfsLoading={false}
+      />
+    )
+    const spinner = screen.getByTestId('spinner')
+    expect(spinner).toBeInTheDocument()
+    expect(spinner).toHaveClass('animate-spin')
+    expect(screen.getByText('Loading accessible data...')).toBeInTheDocument()
+  })
+
   it('should show error state', () => {
     render(
       <AccessibleDataList

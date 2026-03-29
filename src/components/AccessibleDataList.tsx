@@ -39,8 +39,13 @@ export function AccessibleDataList({
 
   if (isLoading) {
     return (
-      <div data-testid="loading" className="p-4 text-gray-500">
-        Loading accessible data...
+      <div data-testid="loading" className="flex items-center justify-center p-8">
+        <div
+          className="animate-spin border-4 border-blue-600 border-t-transparent rounded-full h-8 w-8"
+          data-testid="spinner"
+          role="status"
+        />
+        <span className="ml-3 text-gray-600">Loading accessible data...</span>
       </div>
     )
   }
