@@ -1,33 +1,32 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.5
-milestone_name: milestone
-current_phase: 11
-status: unknown
-last_updated: "2026-03-29T07:45:00.000Z"
+milestone_name: Gap Closure
+status: complete
+last_updated: "2026-03-29T20:30:00.000Z"
 progress:
-  total_phases: 11
-  completed_phases: 7
-  total_plans: 17
-  completed_plans: 15
+  total_phases: 14
+  completed_phases: 14
+  total_plans: 14
+  completed_plans: 14
 ---
 
 # STATE.md - Neural Data Wallets
 
-**Current Phase:** 6
-**Current Mode:** YOLO (auto-approve, just execute)
-**Last Transition:** 2026-03-29 - Phase 6 COMPLETE (4/4 plans executed), Wave 3 done (Vercel + E2E)
+**Milestone:** v1.5 Gap Closure — COMPLETE ✅
+**Last Transition:** 2026-03-29 - Milestone v1.5 archived
 
 ---
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-27)
-See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
+See: .planning/PROJECT.md (updated 2026-03-29)
+See: .planning/milestones/v1.5-ROADMAP.md (archived)
+See: .planning/milestones/v1.5-REQUIREMENTS.md (archived)
 
 **Core value:** Users can upload neural data to IPFS and grant/revoke access to researchers — decentralized data ownership with verifiable access control.
 
-**Current focus:** Phase 6 COMPLETE - All 4 plans executed (toast notifications, loading spinners, responsive design, Vercel + E2E tests)
+**Current focus:** Ready for v2.0 planning — Enhanced features and production hardening
 
 ---
 
@@ -190,34 +189,42 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 
 ---
 
-## Test Coverage Analysis (2026-03-28)
+## Test Coverage Analysis (2026-03-29)
 
-**Overall:** 73.24% (target: 70%) - **TARGET EXCEEDED**
+**Overall:** 88.95% (target: 85%) - **TARGET EXCEEDED**
+**Total Tests:** 178 passing (3 intentionally skipped)
 
 | File | Coverage | Status |
 |------|----------|--------|
 | Components | 92.92% | ✅ GOOD |
 | lib/mockEegData.ts | 100% | ✅ GOOD |
 | lib/contracts/neuralDataRegistry.ts | 100% | ✅ GOOD |
-| serverSigner.ts | 50% | ⚠️ PARTIAL |
-| usePatientData.ts | 80.95% | ✅ GOOD |
+| serverSigner.ts | 93.75% | ✅ GOOD |
+| usePatientData.ts | 86.48% | ✅ GOOD |
 | useAccessControl.ts | 93.75% | ✅ GOOD |
+| useResearcherData.ts | 100% | ✅ GOOD |
 | /api/ipfs/upload/route.ts | 87.5% | ✅ GOOD |
-| Pages (app/) | 0% | ⚠️ GAP (low priority) |
+| app/page.tsx | 60% | ✅ GOOD |
+| app/patient/page.tsx | Covered | ✅ GOOD |
+| lib/pinata.ts | 100% | ✅ GOOD |
+| lib/wagmi.ts | 100% | ✅ GOOD |
 
-**Total Tests:** 119 passing (+15 from Phase 5)
+**All v1 requirements satisfied:** 21/21 (100%)
 
 ---
 
-## Next Actions (Priority Order)
+## Next Actions
 
-**PHASE 6 COMPLETE** - All 4 plans executed successfully:
-1. ✓ Toast notifications for UploadButton
-2. ✓ Visual loading spinners for async operations
-3. ✓ Responsive design for mobile devices
-4. ✓ Vercel deployment configuration + Playwright E2E tests
+**MILESTONE v1.5 COMPLETE** - All 14 phases executed successfully
 
-**Ready for Vercel Deployment:**
+**Ready for v2.0 Planning:**
+1. Define v2.0 requirements (encryption, ENS, expiry, notifications)
+2. Plan production deployment
+3. Consider mobile app / PWA
+
+---
+
+**Vercel Deployment (User Action Required):**
 1. Push code to GitHub
 2. Import repository to Vercel
 3. Configure environment variables from .env.example
