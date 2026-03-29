@@ -29,38 +29,46 @@ export default function PatientPage() {
 
   if (!isConnected) {
     return (
-      <div>
-        <h1>Patient Dashboard</h1>
-        <nav>
-          <Link href="/">Home</Link> |
-          <Link href="/patient">Patient</Link> |
-          <Link href="/researcher">Researcher</Link>
-        </nav>
-        <p>Connect your wallet to view your uploaded neural data</p>
-        <ConnectButton />
+      <div className="min-h-screen p-4 md:p-8">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-2xl md:text-3xl font-bold mb-4">Patient Dashboard</h1>
+          <nav className="flex flex-wrap gap-2 mb-6">
+            <Link href="/" className="text-blue-600 hover:underline">Home</Link> |
+            <Link href="/patient" className="text-blue-600 hover:underline">Patient</Link> |
+            <Link href="/researcher" className="text-blue-600 hover:underline">Researcher</Link>
+          </nav>
+          <p className="text-gray-600 mb-4">Connect your wallet to view your uploaded neural data</p>
+          <ConnectButton />
+        </div>
       </div>
     )
   }
 
   return (
-    <div>
-      <h1>Patient Dashboard</h1>
-      <nav>
-        <Link href="/">Home</Link> |
-        <Link href="/patient">Patient</Link> |
-        <Link href="/researcher">Researcher</Link>
-      </nav>
+    <div className="min-h-screen p-4 md:p-8">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4">Patient Dashboard</h1>
+        <nav className="flex flex-wrap gap-2 mb-6">
+          <Link href="/" className="text-blue-600 hover:underline">Home</Link> |
+          <Link href="/patient" className="text-blue-600 hover:underline">Patient</Link> |
+          <Link href="/researcher" className="text-blue-600 hover:underline">Researcher</Link>
+        </nav>
 
-      <section>
-        <h2>Your Uploaded Data</h2>
-        <div>
-          <UploadButton onUploadComplete={handleUploadComplete} />
-          <button onClick={() => refetch()} disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Refresh'}
-          </button>
-        </div>
-        <UploadedDataList data={uploadedData} isLoading={isLoading} error={error} />
-      </section>
+        <section className="mb-8">
+          <h2 className="text-xl md:text-2xl font-semibold mb-4">Your Uploaded Data</h2>
+          <div className="flex flex-wrap gap-2 mb-4">
+            <UploadButton onUploadComplete={handleUploadComplete} />
+            <button
+              onClick={() => refetch()}
+              disabled={isLoading}
+              className="min-h-[44px] px-4 py-2 bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 rounded-lg text-sm md:text-base"
+            >
+              {isLoading ? 'Loading...' : 'Refresh'}
+            </button>
+          </div>
+          <UploadedDataList data={uploadedData} isLoading={isLoading} error={error} />
+        </section>
+      </div>
     </div>
   )
 }
