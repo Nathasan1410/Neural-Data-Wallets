@@ -46,33 +46,50 @@ export function UploadedDataList({ data, isLoading, error }: UploadedDataListPro
   }
 
   return (
-    <table data-testid="data-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>CID</th>
-          <th>Timestamp</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr key={item.dataId.toString()}>
-            <td>#{item.dataId.toString()}</td>
-            <td>{truncateCid(item.cid)}</td>
-            <td>{formatTimestamp(item.timestamp)}</td>
-            <td>
-              <a
-                href={getIpfsGatewayUrl(item.cid)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on IPFS
-              </a>
-            </td>
+    <div className="overflow-x-auto" data-testid="data-table">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              ID
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              CID
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Timestamp
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Actions
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {data.map((item) => (
+            <tr key={item.dataId.toString()}>
+              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                #{item.dataId.toString()}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-gray-700">
+                {truncateCid(item.cid)}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
+                {formatTimestamp(item.timestamp)}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap text-sm">
+                <a
+                  href={getIpfsGatewayUrl(item.cid)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  View on IPFS
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
