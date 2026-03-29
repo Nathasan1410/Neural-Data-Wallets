@@ -194,4 +194,44 @@ describe('UploadButton', () => {
       expect(mockOnUploadComplete).toHaveBeenCalledWith('QmTestCid', 'https://ipfs.io/ipfs/QmTestCid')
     })
   })
+
+  it('shows spinner while uploading', async () => {
+    // Mock fetch to delay so spinner is visible
+    mockFetch.mockImplementation(() => new Promise(resolve => setTimeout(() => resolve({
+      ok: true,
+      json: async () => ({ cid: 'QmTestCid', url: 'https://ipfs.io/ipfs/QmTestCid' }),
+    }), 200)))
+
+    render(<UploadButton />)
+
+    const generateButton = screen.getByTestId('generate-mock-btn')
+    fireEvent.click(generateButton)
+
+    // Spinners should be visible during upload (both buttons have spinners)
+    const spinners = screen.getAllByTestId('spinner')
+    expect(spinners).toHaveLength(2)
+    spinners.forEach(spinner => {
+      expect(spinner).toHaveClass('animate-spin')
+    })
+
+    // Wait for upload to complete and spinners to disappear
+    await waitFor(() => {
+      expect(screen.queryAllByTestId('spinner')).toHaveLength(0)
+    })
+  })
+
+  it('shows uploading text with spinner', async () => {
+    mockFetch.mockImplementation(() => new Promise(resolve => setTimeout(() => resolve({
+      ok: true,
+      json: async () => ({ cid: 'QmTestCid', url: 'https://ipfs.io/ipfs/QmTestCid' }),
+    }), 200)))
+
+    render(<UploadButton />)
+
+    const generateButton = screen.getByTestId('generate-mock-btn')
+    fireEvent.click(generateButton)
+
+    // Should show "Generating..." text while uploading
+    expect(screen.getByText('Generating...')).toBeInTheDocument()
+  })
 })
