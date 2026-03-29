@@ -210,12 +210,12 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
 ## Next Actions (Priority Order)
 
 1. **Execute Phase 6 Wave 1** - Toast notifications for UploadButton + visual loading spinners ✓ COMPLETE
-2. **Execute Phase 6 Wave 2** - Responsive design for mobile devices (Plan 02, 03, 04)
+2. **Execute Phase 6 Wave 2** - Responsive design for mobile devices (Plan 03) ✓ COMPLETE
 3. **Execute Phase 6 Wave 3** - Vercel deployment + Playwright E2E tests
 
 ---
 
-### Phase 6: Polish & Deployment ✓ WAVE 1 COMPLETE
+### Phase 6: Polish & Deployment ✓ WAVE 2 COMPLETE
 
 - [x] **Plan 01 (06-01):** Toast notifications wired to UploadButton
 - [x] **Plan 02 (06-02):** Visual loading spinners added to all async operations
@@ -224,7 +224,13 @@ See: .planning/BRUTALLY_HONEST_ASSESSMENT.md (2026-03-28)
   - AccessibleDataList: Centered spinner with "Loading accessible data..." text
   - Created loadingTestUtils.ts with reusable test helpers
   - 13 new tests added (42 total tests for spinner components)
+- [x] **Plan 03 (06-03):** Responsive design for all pages and tables
+  - Homepage: Responsive padding (p-4 md:p-8), stacking header, touch-friendly spacing
+  - Patient Dashboard: Max-width container, flex-wrap navigation, 44px touch targets
+  - Researcher Dashboard: Same responsive patterns, E2E test attributes preserved
+  - UploadedDataList: overflow-x-auto wrapper, horizontal scrolling tables
+  - All 150 tests passing, build successful
 
 ---
 
-*Last updated: 2026-03-29 - Phase 6 Wave 1 COMPLETE (06-01: Toast notifications, 06-02: Loading spinners)*
+*Last updated: 2026-03-29 - Phase 6 Wave 2 COMPLETE (06-03: Responsive design for all pages and tables)*
