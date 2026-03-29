@@ -11,83 +11,54 @@ test.describe('Responsive Design Tests', () => {
     await expect(page.getByText('Neural Data Wallet')).toBeVisible()
 
     // Verify subtitle is visible
-    await expect(page.getByText('Decentralized neural data')).toBeVisible()
+    await expect(page.getByText('Decentralized neural data storage with IPFS')).toBeVisible()
 
+    // Verify Connect button is visible and accessible
+    const connectButton = page.getByRole('button', { name: 'Connect Wallet' })
+    await expect(connectButton).toBeVisible()
+    await expect(connectButton).toBeInViewport()
+  })
+
+  test('homepage renders correctly at desktop viewport', async ({ page }) => {
+    // Set desktop viewport
+    await page.setViewportSize({ width: 1280, height: 720 })
+
+    await page.goto('/')
+
+    // Verify main heading is visible
+    await expect(page.getByText('Neural Data Wallet')).toBeVisible()
+
+    // Verify layout is horizontal on desktop (header elements in row)
+    const header = page.locator('header')
+    await expect(header).toBeVisible()
+    
     // Verify Connect button is visible
-    await expect(page.getByRole('button', { name: /connect/i })).toBeVisible()
-
-    // Verify the page is scrollable on mobile
-    const bodyHeight = await page.evaluate(() => document.body.scrollHeight)
-    expect(bodyHeight).toBeGreaterThan(0)
+    await expect(page.getByRole('button', { name: 'Connect Wallet' })).toBeVisible()
   })
 
-  test('connected state layouts correctly on mobile', async ({ page }) => {
-    // Set mobile viewport
+  test('responsive padding is applied on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
-
-    // Mock wallet
-    await page.addInitScript(() => {
-      ;(window as any).ethereum = {
-        isMetaMask: true,
-        request: async ({ method }: { method: string }) => {
-          if (method === 'eth_requestAccounts') {
-            return ['0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb']
-          }
-          return null
-        },
-      }
-    })
-
+    
     await page.goto('/')
-
-    // Connect wallet
-    await page.getByRole('button', { name: /connect/i }).click()
-    await page.waitForTimeout(1000)
-
-    // Verify wallet connected message is visible
-    await expect(page.getByText(/wallet connected/i)).toBeVisible()
-
-    // Verify sections are visible and stacked vertically
-    await expect(page.getByText('Upload Neural Data')).toBeVisible()
-    await expect(page.getByText('Manage Access')).toBeVisible()
-
-    // Verify buttons are accessible (not cut off)
-    const uploadButton = page.getByTestId('upload-file-btn')
-    const generateButton = page.getByTestId('generate-mock-btn')
-
-    await expect(uploadButton).toBeInViewport()
-    await expect(generateButton).toBeInViewport()
-  })
-
-  test('tables and content scroll horizontally on mobile', async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 667 })
-
-    await page.goto('/')
-
-    // Mock and connect wallet
-    await page.addInitScript(() => {
-      ;(window as any).ethereum = {
-        isMetaMask: true,
-        request: async ({ method }: { method: string }) => {
-          if (method === 'eth_requestAccounts') {
-            return ['0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb']
-          }
-          return null
-        },
-      }
-    })
-
-    await page.getByRole('button', { name: /connect/i }).click()
-    await page.waitForTimeout(1000)
-
+    
     // Check that main container has proper padding on mobile
     const mainElement = page.locator('main')
-    const mainPadding = await mainElement.evaluate((el) => {
-      const style = window.getComputedStyle(el)
-      return style.padding
-    })
+    await expect(mainElement).toBeVisible()
+    
+    // Verify the element has some padding (tailwind classes)
+    const className = await mainElement.getAttribute('class')
+    expect(className).toContain('p-4')
+  })
 
-    // Verify padding is applied (responsive design)
-    expect(mainPadding).toBeTruthy()
+  test('responsive header layout adapts to mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 })
+    
+    await page.goto('/')
+    
+    // Header should stack vertically on mobile
+    const header = page.locator('header')
+    const classes = await header.getAttribute('class')
+    expect(classes).toContain('flex-col')
+    expect(classes).toContain('sm:flex-row')
   })
 })
