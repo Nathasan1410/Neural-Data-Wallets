@@ -57,6 +57,13 @@ export const NEURAL_DATA_ABI = [
   },
   {
     type: 'function' as const,
+    name: 'getDataIdsByOwner',
+    inputs: [{ name: 'owner', type: 'address' as const }],
+    outputs: [{ name: '', type: 'uint256[]' as const }],
+    stateMutability: 'view' as const
+  },
+  {
+    type: 'function' as const,
     name: 'getAllAccessibleData',
     inputs: [{ name: 'researcher', type: 'address' as const }],
     outputs: [

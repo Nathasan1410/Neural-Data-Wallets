@@ -1,6 +1,7 @@
 'use client'
 
 import { UploadedData } from '@/lib/hooks/usePatientData'
+import { NeuralDataViewer } from '@/components/NeuralDataViewer'
 
 interface UploadedDataListProps {
   data: UploadedData[]
@@ -76,15 +77,10 @@ export function UploadedDataList({ data, isLoading, error }: UploadedDataListPro
               <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
                 {formatTimestamp(item.timestamp)}
               </td>
-              <td className="px-4 py-3 whitespace-nowrap text-sm">
-                <a
-                  href={getIpfsGatewayUrl(item.cid)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  View on IPFS
-                </a>
+              <td className="px-4 py-3 whitespace-nowrap">
+                <div className="flex flex-col gap-2">
+                  <NeuralDataViewer cid={item.cid} dataId={item.dataId} />
+                </div>
               </td>
             </tr>
           ))}

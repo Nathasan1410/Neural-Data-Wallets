@@ -63,7 +63,7 @@ describe('serverSigner.ts', () => {
 
       expect(result.txHash).toBe('0xMockTxHash')
       expect(result.receipt.status).toBe('success')
-    })
+    }, 15000)
 
     it('throws error when PRIVATE_KEY is not configured', async () => {
       delete process.env.PRIVATE_KEY

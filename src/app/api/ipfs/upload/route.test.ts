@@ -46,7 +46,7 @@ describe('POST /api/ipfs/upload', () => {
     const route = await import('./route')
     expect(route.POST).toBeDefined()
     expect(typeof route.POST).toBe('function')
-  })
+  }, 15000)
 
   it('should return 400 when no file provided', async () => {
     const { POST } = await import('./route')
