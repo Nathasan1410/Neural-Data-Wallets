@@ -15,7 +15,7 @@ export function AccessControl({ onAccessGranted, onAccessRevoked }: AccessContro
   const isValidAddress = researcherAddress.length === 42 && researcherAddress.startsWith('0x')
 
   return (
-    <div className="p-6 bg-surface border border-border rounded-md">
+    <div className="p-6 bg-surface border border-[#E2E8F0] rounded-md">
       <h3 className="text-lg font-semibold text-text-primary mb-4">Manage Researcher Access</h3>
 
       <div className="flex flex-col gap-4">
@@ -28,7 +28,7 @@ export function AccessControl({ onAccessGranted, onAccessRevoked }: AccessContro
             value={researcherAddress}
             onChange={(e) => setResearcherAddress(e.target.value)}
             placeholder="0x..."
-            className="min-h-11 w-full px-3 py-2 border border-border rounded-md bg-background text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary-700 focus:border-transparent transition-colors"
+            className="min-h-11 w-full px-3 py-2 border border-[#E2E8F0] rounded-md bg-background text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary-700 focus:border-transparent transition-colors"
           />
         </div>
 

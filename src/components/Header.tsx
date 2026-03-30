@@ -10,7 +10,7 @@ export function Header() {
   const isActive = (path: string) => pathname === path
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-[#E2E8F0] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-4">
         <div className="flex items-center justify-between gap-8">
           {/* Logo/Branding */}
@@ -65,7 +65,7 @@ export function Header() {
         </div>
 
         {/* Mobile Navigation */}
-        <nav className="md:hidden mt-4 pt-4 border-t border-border flex gap-4">
+        <nav className="md:hidden mt-4 pt-4 border-t border-[#E2E8F0] flex gap-4">
           <Link
             href="/"
             className={`text-sm font-medium transition-colors ${

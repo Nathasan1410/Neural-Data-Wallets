@@ -9,8 +9,10 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  *,
+  *::before,
+  *::after {
+    @apply border-[color:rgb(226,232,240)];
   }
 
   html {

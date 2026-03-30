@@ -102,7 +102,7 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
         <div className="text-xs font-medium text-text-secondary mb-1">
           {channelName}
         </div>
-        <svg width={width} height={height} className="bg-background border border-border rounded">
+        <svg width={width} height={height} className="bg-background border border-[#E2E8F0] rounded">
           <polyline
             points={points}
             fill="none"
@@ -145,7 +145,7 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
   const bandPowers = calculateBandPowers(data.samples, data.metadata.sampleRate)
 
   return (
-    <div className="mt-4 p-4 bg-surface border border-border rounded-md">
+    <div className="mt-4 p-4 bg-surface border border-[#E2E8F0] rounded-md">
       <div className="flex justify-between items-center mb-4">
         <h4 className="font-semibold text-text-primary">EEG Data Preview</h4>
         <button
@@ -160,27 +160,27 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
       <div className="mb-4">
         <h5 className="text-sm font-medium text-text-primary mb-3">Brain Wave Activity</h5>
         <div className="grid grid-cols-5 gap-2">
-          <div className="bg-background border border-border rounded p-3 text-center">
+          <div className="bg-background border border-[#E2E8F0] rounded p-3 text-center">
             <div className="text-xs font-medium text-eeg-delta mb-1">Delta</div>
             <div className="text-lg font-bold text-eeg-delta">{bandPowers.delta}</div>
             <div className="text-xs text-text-secondary mt-1">0.5-4 Hz</div>
           </div>
-          <div className="bg-background border border-border rounded p-3 text-center">
+          <div className="bg-background border border-[#E2E8F0] rounded p-3 text-center">
             <div className="text-xs font-medium text-eeg-theta mb-1">Theta</div>
             <div className="text-lg font-bold text-eeg-theta">{bandPowers.theta}</div>
             <div className="text-xs text-text-secondary mt-1">4-8 Hz</div>
           </div>
-          <div className="bg-background border border-border rounded p-3 text-center">
+          <div className="bg-background border border-[#E2E8F0] rounded p-3 text-center">
             <div className="text-xs font-medium text-eeg-alpha mb-1">Alpha</div>
             <div className="text-lg font-bold text-eeg-alpha">{bandPowers.alpha}</div>
             <div className="text-xs text-text-secondary mt-1">8-13 Hz</div>
           </div>
-          <div className="bg-background border border-border rounded p-3 text-center">
+          <div className="bg-background border border-[#E2E8F0] rounded p-3 text-center">
             <div className="text-xs font-medium text-eeg-beta mb-1">Beta</div>
             <div className="text-lg font-bold text-eeg-beta">{bandPowers.beta}</div>
             <div className="text-xs text-text-secondary mt-1">13-30 Hz</div>
           </div>
-          <div className="bg-background border border-border rounded p-3 text-center">
+          <div className="bg-background border border-[#E2E8F0] rounded p-3 text-center">
             <div className="text-xs font-medium text-eeg-gamma mb-1">Gamma</div>
             <div className="text-lg font-bold text-eeg-gamma">{bandPowers.gamma}</div>
             <div className="text-xs text-text-secondary mt-1">30-100 Hz</div>
@@ -204,7 +204,7 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
       </div>
 
       {/* Metadata */}
-      <div className="text-xs text-text-secondary border-t border-border pt-3">
+      <div className="text-xs text-text-secondary border-t border-[#E2E8F0] pt-3">
         <div className="grid grid-cols-3 gap-4">
           <div>
             <span className="font-medium text-text-primary">Device:</span> {data.metadata.deviceModel}

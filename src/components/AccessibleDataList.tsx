@@ -67,9 +67,9 @@ export function AccessibleDataList({
   }
 
   return (
-    <div data-testid="data-table" className="overflow-x-auto border border-border rounded-md">
+    <div data-testid="data-table" className="overflow-x-auto border border-[#E2E8F0] rounded-md">
       <table className="w-full">
-        <thead className="bg-surface border-b border-border">
+        <thead className="bg-surface border-b border-[#E2E8F0]">
           <tr>
             <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               ID

@@ -22,7 +22,7 @@ export function DashboardStats({ stats, isLoading }: DashboardStatsProps) {
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
-            className="bg-surface border border-border rounded-md p-4 h-24 animate-pulse"
+            className="bg-surface border border-[#E2E8F0] rounded-md p-4 h-24 animate-pulse"
           />
         ))}
       </div>
@@ -34,7 +34,7 @@ export function DashboardStats({ stats, isLoading }: DashboardStatsProps) {
       {stats.map((stat, index) => (
         <div
           key={index}
-          className="bg-background border border-border rounded-md p-4 hover:shadow-sm transition-shadow duration-200"
+          className="bg-background border border-[#E2E8F0] rounded-md p-4 hover:shadow-sm transition-shadow duration-200"
           data-testid={`stat-card-${index}`}
         >
           <div className="flex items-start justify-between mb-2">

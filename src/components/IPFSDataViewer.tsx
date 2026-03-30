@@ -67,7 +67,7 @@ export function IPFSDataViewer({ data, loading, error }: IPFSDataViewerProps) {
     <div className="w-full">
       <div
         data-testid="data"
-        className={`bg-surface border border-border rounded-md p-4 font-mono text-xs text-text-primary ${
+        className={`bg-surface border border-[#E2E8F0] rounded-md p-4 font-mono text-xs text-text-primary ${
           isLargeData ? 'max-h-96 overflow-auto' : ''
         }`}
       >

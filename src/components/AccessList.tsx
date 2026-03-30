@@ -22,7 +22,7 @@ export function AccessList({ dataId, grantedAddresses, isLoading }: AccessListPr
         {grantedAddresses.map((addr) => (
           <div
             key={addr}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-surface border border-border rounded-full text-sm text-text-secondary font-mono"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-surface border border-[#E2E8F0] rounded-full text-sm text-text-secondary font-mono"
           >
             <div className="w-2 h-2 rounded-full bg-success" />
             {addr}

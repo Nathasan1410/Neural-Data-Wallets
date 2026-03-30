@@ -106,7 +106,7 @@ export default function PatientPage() {
                   <button
                     onClick={() => refetch()}
                     disabled={isLoading}
-                    className="inline-flex items-center justify-center gap-2 min-h-11 px-4 py-2 bg-surface border border-border text-text-primary rounded-md hover:bg-surface-alt disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm"
+                    className="inline-flex items-center justify-center gap-2 min-h-11 px-4 py-2 bg-surface border border-[#E2E8F0] text-text-primary rounded-md hover:bg-surface-alt disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm"
                   >
                     {isLoading && (
                       <div className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4" />

@@ -4,7 +4,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full border-t border-border bg-surface">
+    <footer className="w-full border-t border-[#E2E8F0] bg-surface">
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -64,7 +64,7 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-border pt-8">
+        <div className="border-t border-[#E2E8F0] pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-text-secondary">
               © {currentYear} CortexVault. All rights reserved.

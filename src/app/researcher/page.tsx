@@ -98,7 +98,7 @@ export default function ResearcherPage() {
 
             {/* Info Section */}
             {accessibleData.length === 0 && !isLoading && !error && (
-              <div className="bg-surface border border-border rounded-md p-8 text-center">
+              <div className="bg-surface border border-[#E2E8F0] rounded-md p-8 text-center">
                 <p className="text-text-secondary mb-4">
                   No data accessible yet. Request access from patients or ask them to share their neural data with you.
                 </p>
