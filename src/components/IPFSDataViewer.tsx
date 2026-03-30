@@ -12,7 +12,7 @@ export function IPFSDataViewer({ data, loading, error }: IPFSDataViewerProps) {
     return (
       <div
         data-testid="loading"
-        className="p-4 text-gray-500 flex items-center gap-2"
+        className="p-4 text-text-secondary flex items-center gap-2 text-sm"
       >
         <span className="animate-pulse">Loading data...</span>
       </div>
@@ -24,7 +24,7 @@ export function IPFSDataViewer({ data, loading, error }: IPFSDataViewerProps) {
     return (
       <div
         data-testid="error"
-        className="p-4 text-red-600 bg-red-50 rounded border border-red-200"
+        className="p-4 text-error bg-error/10 rounded-md border border-error"
       >
         {error}
       </div>
@@ -36,7 +36,7 @@ export function IPFSDataViewer({ data, loading, error }: IPFSDataViewerProps) {
     return (
       <div
         data-testid="empty"
-        className="p-4 text-gray-500 text-center"
+        className="p-4 text-text-secondary text-center text-sm"
       >
         No data available
       </div>
@@ -51,7 +51,7 @@ export function IPFSDataViewer({ data, loading, error }: IPFSDataViewerProps) {
       return (
         <div
           data-testid="error"
-          className="p-4 text-red-600 bg-red-50 rounded border border-red-200"
+          className="p-4 text-error bg-error/10 rounded-md border border-error"
         >
           Failed to parse data: {(e as Error).message}
         </div>
@@ -67,7 +67,7 @@ export function IPFSDataViewer({ data, loading, error }: IPFSDataViewerProps) {
     <div className="w-full">
       <div
         data-testid="data"
-        className={`bg-gray-50 border border-gray-200 rounded p-4 font-mono text-xs text-gray-800 ${
+        className={`bg-surface border border-border rounded-md p-4 font-mono text-xs text-text-primary ${
           isLargeData ? 'max-h-96 overflow-auto' : ''
         }`}
       >

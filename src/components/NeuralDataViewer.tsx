@@ -99,14 +99,14 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
 
     return (
       <div key={channelName} className="mb-2">
-        <div className="flex justify-between text-xs text-gray-500 mb-1">
-          <span>{channelName}</span>
+        <div className="text-xs font-medium text-text-secondary mb-1">
+          {channelName}
         </div>
-        <svg width={width} height={height} className="bg-gray-50 rounded">
+        <svg width={width} height={height} className="bg-background border border-border rounded">
           <polyline
             points={points}
             fill="none"
-            stroke="#3B82F6"
+            stroke="#1E40AF"
             strokeWidth="1.5"
           />
         </svg>
@@ -118,7 +118,7 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
     return (
       <button
         onClick={() => setExpanded(true)}
-        className="text-blue-600 hover:text-blue-800 text-sm"
+        className="text-primary-700 hover:text-primary-800 text-sm font-medium transition-colors"
       >
         View Neural Data
       </button>
@@ -127,8 +127,8 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2 text-sm text-gray-600">
-        <div className="animate-spin border-2 border-blue-600 border-t-transparent rounded-full h-4 w-4" />
+      <div className="flex items-center gap-2 text-sm text-text-secondary">
+        <div className="animate-spin border-2 border-primary-700 border-t-transparent rounded-full h-4 w-4" />
         Fetching from IPFS...
       </div>
     )
@@ -136,7 +136,7 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
 
   if (error || !data) {
     return (
-      <div className="text-sm text-red-600">
+      <div className="text-sm text-error">
         Error: {error || 'No data available'}
       </div>
     )
@@ -145,12 +145,12 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
   const bandPowers = calculateBandPowers(data.samples, data.metadata.sampleRate)
 
   return (
-    <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+    <div className="mt-4 p-4 bg-surface border border-border rounded-md">
       <div className="flex justify-between items-center mb-4">
-        <h4 className="font-semibold text-gray-700">EEG Data Preview</h4>
+        <h4 className="font-semibold text-text-primary">EEG Data Preview</h4>
         <button
           onClick={() => setExpanded(false)}
-          className="text-gray-400 hover:text-gray-600"
+          className="text-text-secondary hover:text-text-primary transition-colors"
         >
           ✕
         </button>
@@ -158,62 +158,62 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
 
       {/* Brain Wave Bands */}
       <div className="mb-4">
-        <h5 className="text-sm font-medium text-gray-600 mb-2">Brain Wave Activity</h5>
+        <h5 className="text-sm font-medium text-text-primary mb-3">Brain Wave Activity</h5>
         <div className="grid grid-cols-5 gap-2">
-          <div className="bg-purple-100 rounded p-2 text-center">
-            <div className="text-xs text-purple-600 font-medium">Delta</div>
-            <div className="text-lg font-bold text-purple-800">{bandPowers.delta}</div>
-            <div className="text-xs text-purple-500">0.5-4 Hz</div>
+          <div className="bg-background border border-border rounded p-3 text-center">
+            <div className="text-xs font-medium text-eeg-delta mb-1">Delta</div>
+            <div className="text-lg font-bold text-eeg-delta">{bandPowers.delta}</div>
+            <div className="text-xs text-text-secondary mt-1">0.5-4 Hz</div>
           </div>
-          <div className="bg-blue-100 rounded p-2 text-center">
-            <div className="text-xs text-blue-600 font-medium">Theta</div>
-            <div className="text-lg font-bold text-blue-800">{bandPowers.theta}</div>
-            <div className="text-xs text-blue-500">4-8 Hz</div>
+          <div className="bg-background border border-border rounded p-3 text-center">
+            <div className="text-xs font-medium text-eeg-theta mb-1">Theta</div>
+            <div className="text-lg font-bold text-eeg-theta">{bandPowers.theta}</div>
+            <div className="text-xs text-text-secondary mt-1">4-8 Hz</div>
           </div>
-          <div className="bg-green-100 rounded p-2 text-center">
-            <div className="text-xs text-green-600 font-medium">Alpha</div>
-            <div className="text-lg font-bold text-green-800">{bandPowers.alpha}</div>
-            <div className="text-xs text-green-500">8-13 Hz</div>
+          <div className="bg-background border border-border rounded p-3 text-center">
+            <div className="text-xs font-medium text-eeg-alpha mb-1">Alpha</div>
+            <div className="text-lg font-bold text-eeg-alpha">{bandPowers.alpha}</div>
+            <div className="text-xs text-text-secondary mt-1">8-13 Hz</div>
           </div>
-          <div className="bg-yellow-100 rounded p-2 text-center">
-            <div className="text-xs text-yellow-600 font-medium">Beta</div>
-            <div className="text-lg font-bold text-yellow-800">{bandPowers.beta}</div>
-            <div className="text-xs text-yellow-500">13-30 Hz</div>
+          <div className="bg-background border border-border rounded p-3 text-center">
+            <div className="text-xs font-medium text-eeg-beta mb-1">Beta</div>
+            <div className="text-lg font-bold text-eeg-beta">{bandPowers.beta}</div>
+            <div className="text-xs text-text-secondary mt-1">13-30 Hz</div>
           </div>
-          <div className="bg-red-100 rounded p-2 text-center">
-            <div className="text-xs text-red-600 font-medium">Gamma</div>
-            <div className="text-lg font-bold text-red-800">{bandPowers.gamma}</div>
-            <div className="text-xs text-red-500">30-100 Hz</div>
+          <div className="bg-background border border-border rounded p-3 text-center">
+            <div className="text-xs font-medium text-eeg-gamma mb-1">Gamma</div>
+            <div className="text-lg font-bold text-eeg-gamma">{bandPowers.gamma}</div>
+            <div className="text-xs text-text-secondary mt-1">30-100 Hz</div>
           </div>
         </div>
       </div>
 
       {/* Waveforms - Show first 4 channels */}
       <div className="mb-4">
-        <h5 className="text-sm font-medium text-gray-600 mb-2">Channel Waveforms</h5>
-        <div className="space-y-1">
+        <h5 className="text-sm font-medium text-text-primary mb-3">Channel Waveforms</h5>
+        <div className="space-y-2">
           {data.channels.slice(0, 4).map((channel, idx) =>
             renderWaveform(data.samples, channel, idx)
           )}
         </div>
         {data.channels.length > 4 && (
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-text-secondary mt-2">
             Showing 4 of {data.channels.length} channels
           </p>
         )}
       </div>
 
       {/* Metadata */}
-      <div className="text-xs text-gray-500 border-t pt-3">
+      <div className="text-xs text-text-secondary border-t border-border pt-3">
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <span className="font-medium">Device:</span> {data.metadata.deviceModel}
+            <span className="font-medium text-text-primary">Device:</span> {data.metadata.deviceModel}
           </div>
           <div>
-            <span className="font-medium">Sample Rate:</span> {data.metadata.sampleRate} Hz
+            <span className="font-medium text-text-primary">Sample Rate:</span> {data.metadata.sampleRate} Hz
           </div>
           <div>
-            <span className="font-medium">Duration:</span> {data.duration}s
+            <span className="font-medium text-text-primary">Duration:</span> {data.duration}s
           </div>
         </div>
       </div>
@@ -224,7 +224,7 @@ export function NeuralDataViewer({ cid, dataId }: NeuralDataViewerProps) {
           href={`${GATEWAY_URL}/ipfs/${cid}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800 hover:underline"
+          className="text-primary-700 hover:text-primary-800 hover:underline transition-colors"
         >
           View Full JSON on IPFS →
         </a>

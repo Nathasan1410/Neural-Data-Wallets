@@ -49,9 +49,12 @@ export function GrantAccessButton({ researcherAddress, onSuccess }: GrantAccessB
     <button
       onClick={handleGrant}
       disabled={isLoading || !researcherAddress}
-      className="min-h-[44px] px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="inline-flex items-center justify-center gap-2 min-h-11 px-4 py-2 bg-success text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm"
     >
-      {isLoading ? 'Confirming...' : 'Grant Access'}
+      {isLoading && (
+        <div className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4" />
+      )}
+      <span>{isLoading ? 'Confirming...' : 'Grant Access'}</span>
     </button>
   )
 }

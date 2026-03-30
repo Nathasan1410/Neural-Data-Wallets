@@ -104,38 +104,40 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
   }
 
   return (
-    <div>
-      <button
-        onClick={() => fileInputRef.current?.click()}
-        disabled={uploading}
-        data-testid="upload-file-btn"
-        className="min-h-[44px] px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
-      >
-        {uploading && (
-          <div
-            className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4"
-            data-testid="spinner"
-            role="status"
-          />
-        )}
-        <span>{uploading ? 'Uploading...' : 'Upload File'}</span>
-      </button>
+    <div className="space-y-3">
+      <div className="flex flex-wrap gap-2">
+        <button
+          onClick={() => fileInputRef.current?.click()}
+          disabled={uploading}
+          data-testid="upload-file-btn"
+          className="inline-flex items-center gap-2 min-h-11 px-4 py-2 bg-primary-700 text-white rounded-md hover:bg-primary-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm"
+        >
+          {uploading && (
+            <div
+              className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4"
+              data-testid="spinner"
+              role="status"
+            />
+          )}
+          <span>{uploading ? 'Uploading...' : 'Upload File'}</span>
+        </button>
 
-      <button
-        onClick={handleGenerateAndUpload}
-        disabled={uploading}
-        data-testid="generate-mock-btn"
-        className="min-h-[44px] px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
-      >
-        {uploading && (
-          <div
-            className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4"
-            data-testid="spinner"
-            role="status"
-          />
-        )}
-        <span>{uploading ? 'Generating...' : 'Generate Mock EEG'}</span>
-      </button>
+        <button
+          onClick={handleGenerateAndUpload}
+          disabled={uploading}
+          data-testid="generate-mock-btn"
+          className="inline-flex items-center gap-2 min-h-11 px-4 py-2 bg-success text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm"
+        >
+          {uploading && (
+            <div
+              className="animate-spin border-2 border-current border-t-transparent rounded-full h-4 w-4"
+              data-testid="spinner"
+              role="status"
+            />
+          )}
+          <span>{uploading ? 'Generating...' : 'Generate Mock EEG'}</span>
+        </button>
+      </div>
 
       <input
         ref={fileInputRef}
@@ -146,7 +148,7 @@ export function UploadButton({ onUploadComplete, userId = 'user-001' }: UploadBu
       />
 
       {error && (
-        <div data-testid="upload-error" style={{ color: 'red' }}>
+        <div data-testid="upload-error" className="p-3 bg-error/10 border border-error text-error rounded-md text-sm">
           {error}
         </div>
       )}

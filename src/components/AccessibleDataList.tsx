@@ -39,20 +39,20 @@ export function AccessibleDataList({
 
   if (isLoading) {
     return (
-      <div data-testid="loading" className="flex items-center justify-center p-8">
+      <div data-testid="loading" className="flex flex-col items-center justify-center p-12">
         <div
-          className="animate-spin border-4 border-blue-600 border-t-transparent rounded-full h-8 w-8"
+          className="animate-spin border-4 border-primary-700 border-t-transparent rounded-full h-8 w-8 mb-3"
           data-testid="spinner"
           role="status"
         />
-        <span className="ml-3 text-gray-600">Loading accessible data...</span>
+        <span className="text-text-secondary text-sm">Loading accessible data...</span>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div data-testid="error" className="p-4 text-red-600">
+      <div data-testid="error" className="p-4 bg-error/10 border border-error text-error rounded-md text-sm">
         Error: {error}
       </div>
     )
@@ -60,53 +60,53 @@ export function AccessibleDataList({
 
   if (data.length === 0) {
     return (
-      <div data-testid="empty" className="p-4 text-gray-500">
+      <div data-testid="empty" className="p-8 text-center text-text-secondary">
         No data accessible. Ask patients to grant you access.
       </div>
     )
   }
 
   return (
-    <div data-testid="data-table" className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div data-testid="data-table" className="overflow-x-auto border border-border rounded-md">
+      <table className="w-full">
+        <thead className="bg-surface border-b border-border">
           <tr>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               ID
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               CID
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               Timestamp
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               IPFS Data
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-border">
           {data.map((item) => (
-            <tr key={item.dataId.toString()}>
-              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+            <tr key={item.dataId.toString()} className="hover:bg-surface/50 transition-colors">
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-text-primary">
                 #{item.dataId.toString()}
               </td>
-              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-gray-700">
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-text-secondary">
                 {truncateCid(item.cid)}
               </td>
-              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
+              <td className="px-4 py-3 whitespace-nowrap text-sm text-text-secondary">
                 {formatTimestamp(item.timestamp)}
               </td>
-              <td className="px-4 py-3 text-sm text-gray-700">
+              <td className="px-4 py-3 text-sm text-text-secondary">
                 {item.ipfsError ? (
-                  <span className="text-red-600">{item.ipfsError}</span>
+                  <span className="text-error">{item.ipfsError}</span>
                 ) : ipfsLoading ? (
-                  <span className="text-gray-500">Loading...</span>
+                  <span className="text-text-secondary">Loading...</span>
                 ) : (
-                  <pre className="text-xs bg-gray-50 p-2 rounded max-w-xs overflow-hidden text-ellipsis">
+                  <pre className="text-xs bg-surface p-2 rounded max-w-xs overflow-hidden text-ellipsis font-mono">
                     {getIpfsDataPreview(item.ipfsData)}
                   </pre>
                 )}
@@ -116,7 +116,7 @@ export function AccessibleDataList({
                   href={getIpfsGatewayUrl(item.cid)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-primary-700 hover:text-primary-800 transition-colors font-medium"
                 >
                   View on IPFS
                 </a>

@@ -27,54 +27,54 @@ export function UploadedDataList({ data, isLoading, error }: UploadedDataListPro
 
   if (isLoading) {
     return (
-      <div data-testid="loading" className="flex items-center justify-center p-8">
+      <div data-testid="loading" className="flex flex-col items-center justify-center p-12">
         <div
-          className="animate-spin border-4 border-blue-600 border-t-transparent rounded-full h-8 w-8"
+          className="animate-spin border-4 border-primary-700 border-t-transparent rounded-full h-8 w-8 mb-3"
           data-testid="spinner"
           role="status"
         />
-        <span className="ml-3 text-gray-600">Loading data...</span>
+        <span className="text-text-secondary text-sm">Loading data...</span>
       </div>
     )
   }
 
   if (error) {
-    return <div data-testid="error">Error: {error}</div>
+    return <div data-testid="error" className="p-4 bg-error/10 border border-error text-error rounded-md text-sm">Error: {error}</div>
   }
 
   if (data.length === 0) {
-    return <div data-testid="empty">No uploads yet</div>
+    return <div data-testid="empty" className="p-8 text-center text-text-secondary">No uploads yet</div>
   }
 
   return (
-    <div className="overflow-x-auto" data-testid="data-table">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="overflow-x-auto border border-border rounded-md" data-testid="data-table">
+      <table className="w-full">
+        <thead className="bg-surface border-b border-border">
           <tr>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               ID
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               CID
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               Timestamp
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-semibold text-text-secondary uppercase tracking-wider">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-border">
           {data.map((item) => (
-            <tr key={item.dataId.toString()}>
-              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+            <tr key={item.dataId.toString()} className="hover:bg-surface/50 transition-colors">
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-text-primary">
                 #{item.dataId.toString()}
               </td>
-              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-gray-700">
+              <td className="px-4 py-3 whitespace-nowrap text-sm font-mono text-text-secondary">
                 {truncateCid(item.cid)}
               </td>
-              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
+              <td className="px-4 py-3 whitespace-nowrap text-sm text-text-secondary">
                 {formatTimestamp(item.timestamp)}
               </td>
               <td className="px-4 py-3 whitespace-nowrap">
