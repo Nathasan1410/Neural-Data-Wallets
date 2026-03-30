@@ -5,6 +5,7 @@ import { useAccount } from 'wagmi'
 import { usePatientData } from '@/lib/hooks/usePatientData'
 import { UploadedDataList } from '@/components/UploadedDataList'
 import { UploadButton } from '@/components/UploadButton'
+import { AccessControl } from '@/components/AccessControl'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
@@ -67,6 +68,20 @@ export default function PatientPage() {
             </button>
           </div>
           <UploadedDataList data={uploadedData} isLoading={isLoading} error={error} />
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl md:text-2xl font-semibold mb-4">Manage Access</h2>
+          <AccessControl
+            onAccessGranted={() => {
+              toast.success('Access granted!')
+              refetch()
+            }}
+            onAccessRevoked={() => {
+              toast.success('Access revoked!')
+              refetch()
+            }}
+          />
         </section>
       </div>
     </div>
